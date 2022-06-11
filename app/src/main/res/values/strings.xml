@@ -7,5 +7,8 @@
     <string name="validatePasswordId">Validate Password</string>
     <string name="registerUserText">Register User Title</string>
     <string name="loginScreenId">Already have an account?</string>
+    <string name="tooltipAddNewTask">Add new task</string>
+    <string name="tooltipFilterTasks">Filter tasks by label</string>
+    <string name="Settings">Settings</string>
 
 </resources>

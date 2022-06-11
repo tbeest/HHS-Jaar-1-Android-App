@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:scrollbarSize="14dp"
-    tools:context=".TaskManager">
+    tools:context=".OpenTasks">
 
     <TextView
         android:id="@+id/task_manager_to_do_tasks_id"
@@ -16,29 +16,18 @@
         android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
-
-    <TextView
-        android:id="@+id/task_manager_completed_tasks_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Completed"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_manager_to_do_tasks_id"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
         android:id="@+id/task_manager_plus_id"
         android:layout_width="66dp"
         android:layout_height="57dp"
         android:clickable="true"
+        android:contentDescription="@string/tooltipAddNewTask"
+        android:tooltipText="@string/tooltipAddNewTask"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.996"
@@ -51,6 +40,8 @@
         android:id="@+id/task_manager_settings_id"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:contentDescription="@string/Settings"
+        android:tooltipText="@string/Settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.955"
@@ -64,6 +55,8 @@
         android:layout_width="66dp"
         android:layout_height="57dp"
         android:clickable="true"
+        android:contentDescription="@string/tooltipFilterTasks"
+        android:tooltipText="@string/tooltipFilterTasks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.997"

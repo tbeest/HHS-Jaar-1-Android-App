@@ -7,4 +7,7 @@
     <string name="registerUserText">Registreer gebruiker</string>
     <string name="loginScreenId">Al een account?</string>
     <string name="registerAccount">Registreer Account</string>
+    <string name="tooltipAddNewTask">Voeg nieuwe taak toe</string>
+    <string name="tooltipFilterTasks">Filter taken op label</string>
+    <string name="Settings">Instellingen</string>
 </resources>
