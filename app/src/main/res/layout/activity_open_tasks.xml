@@ -10,14 +10,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasks_list"
-        android:layout_width="414dp"
-        android:layout_height="562dp"
+        android:layout_width="0dp"
+        android:layout_height="604dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.614" />
 
     <TextView
         android:id="@+id/task_manager_to_do_tasks_id"
@@ -76,11 +76,30 @@
         app:layout_constraintVertical_bias="0.902"
         app:srcCompat="@drawable/plus" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="59dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/openTasksButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/openTasksButton"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/closedTasksButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/closedTasksButton"
+            style="?android:attr/buttonBarButtonStyle" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

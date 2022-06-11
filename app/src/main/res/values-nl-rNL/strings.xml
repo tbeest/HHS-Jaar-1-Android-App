@@ -10,4 +10,6 @@
     <string name="tooltipAddNewTask">Voeg nieuwe taak toe</string>
     <string name="tooltipFilterTasks">Filter taken op label</string>
     <string name="Settings">Instellingen</string>
+    <string name="openTasksButton">Open Taken</string>
+    <string name="closedTasksButton">Gesloten Taken</string>
 </resources>

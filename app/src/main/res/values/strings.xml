@@ -10,5 +10,7 @@
     <string name="tooltipAddNewTask">Add new task</string>
     <string name="tooltipFilterTasks">Filter tasks by label</string>
     <string name="Settings">Settings</string>
+    <string name="openTasksButton">Open Tasks</string>
+    <string name="closedTasksButton">Closed Tasks</string>
 
 </resources>
