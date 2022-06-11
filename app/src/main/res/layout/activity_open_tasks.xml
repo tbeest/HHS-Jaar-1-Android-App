@@ -8,6 +8,17 @@
     android:scrollbarSize="14dp"
     tools:context=".OpenTasks">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tasks_list"
+        android:layout_width="414dp"
+        android:layout_height="562dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
+
     <TextView
         android:id="@+id/task_manager_to_do_tasks_id"
         android:layout_width="wrap_content"
@@ -20,21 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
-
-    <ImageView
-        android:id="@+id/task_manager_plus_id"
-        android:layout_width="66dp"
-        android:layout_height="57dp"
-        android:clickable="true"
-        android:contentDescription="@string/tooltipAddNewTask"
-        android:tooltipText="@string/tooltipAddNewTask"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.996"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/plus" />
 
     <ImageView
         android:id="@+id/task_manager_settings_id"
@@ -62,7 +58,29 @@
         app:layout_constraintHorizontal_bias="0.997"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.914"
+        app:layout_constraintVertical_bias="0.816"
         app:srcCompat="@drawable/filter" />
+
+    <ImageView
+        android:id="@+id/task_manager_plus_id"
+        android:layout_width="66dp"
+        android:layout_height="57dp"
+        android:clickable="true"
+        android:contentDescription="@string/tooltipAddNewTask"
+        android:tooltipText="@string/tooltipAddNewTask"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.997"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902"
+        app:srcCompat="@drawable/plus" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
