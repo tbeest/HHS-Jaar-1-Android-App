@@ -6,6 +6,6 @@
     <string name="passwordId">Password</string>
     <string name="validatePasswordId">Validate Password</string>
     <string name="registerUserText">Register User Title</string>
-    <string name="loginScreenId">Login Screen</string>
+    <string name="loginScreenId">Already have an account?</string>
 
 </resources>

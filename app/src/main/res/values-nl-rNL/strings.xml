@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">To do today</string>
     <string name="signInId" translatable="false">Aanmelden</string>
     <string name="userId">Gebruikersnaam</string>
     <string name="passwordId">Wachtwoord</string>
     <string name="validatePasswordId">Herhaal wachtwoord</string>
     <string name="registerUserText">Registreer gebruiker</string>
-    <string name="loginScreenId">Login scherm</string>
+    <string name="loginScreenId">Al een account?</string>
     <string name="registerAccount">Registreer Account</string>
 </resources>
