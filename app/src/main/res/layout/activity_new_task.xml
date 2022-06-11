@@ -23,6 +23,7 @@
         android:id="@+id/new_task_description_id"
         android:layout_width="102dp"
         android:layout_height="55dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.003"
@@ -32,39 +33,41 @@
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
     <ImageView
-        android:id="@+id/new_task_calendar_id"
-        android:layout_width="102dp"
-        android:layout_height="55dp"
+        android:id="@+id/new_task_description_id"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/ic_menu_month" />
+        app:srcCompat="@drawable/label" />
 
     <ImageView
-        android:id="@+id/new_task_add_label_id"
-        android:layout_width="86dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/new_task_calendar_id"
+        android:layout_width="78dp"
+        android:layout_height="51dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/new_task_toolbar_id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/ic_input_delete" />
+        app:layout_constraintVertical_bias="0.998"
+        app:srcCompat="@drawable/calendar" />
 
     <ImageView
         android:id="@+id/new_task_save_id"
-        android:layout_width="78dp"
-        android:layout_height="56dp"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
+        app:layout_constraintVertical_bias="0.989"
+        app:srcCompat="@drawable/save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

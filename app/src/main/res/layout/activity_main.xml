@@ -9,9 +9,10 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/login_register_account_text_id"
+        android:id="@+id/registerAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:text="Register Account"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -23,7 +24,7 @@
         app:layout_constraintVertical_bias="0.935" />
 
     <Button
-        android:id="@+id/login_sign_in_button_id"
+        android:id="@+id/signInId"
         android:layout_width="143dp"
         android:layout_height="54dp"
         android:backgroundTint="#0D2CD5"
@@ -37,36 +38,50 @@
         app:layout_constraintVertical_bias="0.859" />
 
     <EditText
-        android:id="@+id/login_login_name_text_id"
+        android:id="@+id/userId"
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:background="@color/cardview_dark_background"
         android:ems="10"
+        android:hint="Enter Username"
         android:inputType="textPersonName"
-        android:text="Login name"
         android:textAlignment="center"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/login_password_text_id"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/passwordId"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:background="@color/cardview_dark_background"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.656" />
 
-    <EditText
-        android:id="@+id/login_password_text_id"
-        android:layout_width="250dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="84dp"
-        android:background="@color/cardview_dark_background"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/login_sign_in_button_id"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="184dp"
+        android:layout_height="197dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11"
+        app:srcCompat="@drawable/logochecklist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
