@@ -1,16 +1,11 @@
 <resources>
     <string name="app_name">To do today</string>
-    <string name="login_register_account_text_id" translatable="false">Register Account</string>
-    <string name="login_sign_in_button_id" translatable="false">Sign in</string>
-    <string name="login_login_name_text_id" translatable="false">Login name</string>
-    <string name="login_password_text_id" translatable="false">Password</string>
-    <string name="register_login_name_text_id" translatable="false">Login name</string>
-    <string name="register_set_password_text_id" translatable="false">Password</string>
-    <string name="register_validate_password_text_id" translatable="false">Password</string>
-    <string name="register_register_button_id" translatable="false">Register</string>
-    <string name="new_task_toolbar_id" translatable="false">Toolbar</string>
-    <string name="new_task_description_id" translatable="false">Description</string>
-    <string name="new_task_calendar_id" translatable="false">Calendar</string>
-    <string name="new_task_save_id" translatable="false">Save</string>
+    <string name="registerAccount" translatable="false">Register Account</string>
+    <string name="signInId" translatable="false">Sign in</string>
+    <string name="userId" translatable="false">Login name</string>
+    <string name="passwordId" translatable="false">Password</string>
+    <string name="validatePasswordId" translatable="false">Validate Password</string>
+    <string name="registerUserText" translatable="false">Register User Title</string>
+    <string name="loginScreenId" translatable="false">Login Screen</string>
 
 </resources>
