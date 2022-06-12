@@ -15,4 +15,12 @@
     <string name="toDoTitleToDo">Te Doen</string>
     <string name="toDoTitleDone">Gedaan</string>
     <string name="ToDoTitleTask">Taak</string>
+    <string name="taskEdit">Bewerken</string>
+    <string name="taskClose">Sluiten</string>
+    <string name="taskSave">Opslaan</string>
+    <string name="taskCancel">Annuleren</string>
+    <string name="registerId">Registreren</string>
+    <string name="taskDescriptionHint">Geef omschrijving</string>
+    <string name="taskTitleHint">Geef titel</string>
+    <string name="taskDateHint">Stel datum en titel in</string>
 </resources>

@@ -55,8 +55,8 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            taskTitle = itemView.findViewById(R.id.taskRow_task_title);
-            taskDate = itemView.findViewById(R.id.taskRow_task_date);
+            taskTitle = itemView.findViewById(R.id.task_title);
+            taskDate = itemView.findViewById(R.id.task_date);
             taskDone = itemView.findViewById(R.id.taskCheckBox);
         }
     }
