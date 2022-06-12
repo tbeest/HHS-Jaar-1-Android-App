@@ -17,10 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
-import com.example.gr11today.RegisterActivity;
 import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Task;
-import com.example.gr11today.task.OpenedTask;
+import com.example.gr11today.task.AddTaskActivity;
 
 public class ClosedTasks extends AppCompatActivity {
 
@@ -62,7 +61,7 @@ public class ClosedTasks extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        startActivity(new Intent(ClosedTasks.this, OpenedTask.class));
+        startActivity(new Intent(ClosedTasks.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {

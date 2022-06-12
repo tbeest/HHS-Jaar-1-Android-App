@@ -2,7 +2,6 @@ package com.example.gr11today.task;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,15 +13,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gr11today.R;
-import com.example.gr11today.tasks.ToDoTasks;
+import com.example.gr11today.models.Task;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
-public class OpenedTask extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class AddTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     Button button;
     int day, month, year, hour, minute;
     int myDay, myMonth, myYear, myHour, myMinute;
+    String strDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,27 +41,45 @@ public class OpenedTask extends AppCompatActivity implements DatePickerDialog.On
                 year = calendar.get(Calendar.YEAR);
                 month = calendar.get(Calendar.MONTH);
                 day = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(OpenedTask.this, OpenedTask.this, year, month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddTaskActivity.this, AddTaskActivity.this, year, month, day);
                 datePickerDialog.show();
             }
         });
     }
 
-    public void save(View view) {
+    public void save(View view) throws ParseException {
         EditText titleET = findViewById(R.id.task_title);
         EditText descriptionET = findViewById(R.id.task_description);
 
         String title = titleET.getText().toString();
+        String description = descriptionET.getText().toString();
 
         if (title == null || title.isEmpty()) {
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
-        }
+        } else {
+            Date date = null;
+            if (myYear > 0) {
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                date = df.parse(strDate);
 
-        System.out.println(title);
+                System.out.println(date);
+            }
+
+
+            System.out.println(description);
+            System.out.println(title);
+
+            Task task = new Task(title,description,date);
+            task.addTask(task, this);
+
+            System.out.println(task);
+            finish();
+
+        }
     }
 
     public void cancel(View view) {
-        startActivity(new Intent(OpenedTask.this, ToDoTasks.class));
+        finish();
     }
 
 
@@ -69,7 +91,7 @@ public class OpenedTask extends AppCompatActivity implements DatePickerDialog.On
         Calendar c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR);
         minute = c.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(OpenedTask.this, OpenedTask.this, hour, minute, true);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(AddTaskActivity.this, AddTaskActivity.this, hour, minute, true);
         System.out.println(hour + minute);
         timePickerDialog.show();
     }
@@ -78,7 +100,8 @@ public class OpenedTask extends AppCompatActivity implements DatePickerDialog.On
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         myHour = hourOfDay;
         myMinute = minute;
-        button.setText(String.format("%02d/%02d/%d %02d:%02d", myDay, myMonth, myYear, myHour, myMinute));
+        strDate = String.format("%02d/%02d/%04d %02d:%02d", myDay, myMonth, myYear, myHour, myMinute);
+        button.setText(strDate);
     }
 }
 

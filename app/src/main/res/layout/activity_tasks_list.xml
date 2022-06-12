@@ -48,10 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="#6e14ef"
             android:onClick="alreadyOpen"
-            android:text="@string/openTasksButton"
-            tools:ignore="TextContrastCheck" />
+            android:text="@string/openTasksButton" />
 
         <Button
             android:id="@+id/closedTasksButton"

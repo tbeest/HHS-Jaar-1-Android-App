@@ -19,12 +19,15 @@ import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Task;
-import com.example.gr11today.task.OpenedTask;
+import com.example.gr11today.task.AddTaskActivity;
+
+import java.util.List;
 
 public class ToDoTasks extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
+    private List<Task> tasks;
 
     Button openTasksButtonId,closedTasksButtonId;
     TextView titleId;
@@ -33,23 +36,25 @@ public class ToDoTasks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks_list);
+
         openTasksButtonId = findViewById(R.id.openTasksButton);
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
         titleId = findViewById(R.id.taskTitleId);
 
         titleId.setText(R.string.toDoTitleToDo);
 
-        launcher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
+        launcher = registerForActivityResult( new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
+                        tasks.clear();
+                        tasks.addAll(Task.getAllOpen(getApplicationContext()));
                         recyclerView.getAdapter().notifyDataSetChanged();
                     }
                 });
+        tasks = Task.getAllOpen(this);
 
         recyclerView = findViewById(R.id.tasks_list);
-        TaskRowAdapter adapter = new TaskRowAdapter(Task.getAllOpen());
+        TaskRowAdapter adapter = new TaskRowAdapter(tasks);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -61,7 +66,7 @@ public class ToDoTasks extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        startActivity(new Intent(ToDoTasks.this, OpenedTask.class));
+        startActivity(new Intent(ToDoTasks.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {

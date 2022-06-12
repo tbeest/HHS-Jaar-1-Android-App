@@ -1,13 +1,20 @@
 package com.example.gr11today.models;
 
+import android.content.Context;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.gr11today.Converters;
+import com.example.gr11today.Database;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Task {
@@ -16,6 +23,8 @@ public class Task {
 
     private String title;
     private String description;
+
+    @TypeConverters({Converters.class})
     private Date date;
     private Boolean done;
 
@@ -27,24 +36,6 @@ public class Task {
 
     @Ignore
     private static ArrayList<Task> tasks = new ArrayList<Task>() {{
-        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
-        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
-        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
-        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
-        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
-        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
-        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
-        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
-        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
-        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
-        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
-        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
-        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
-        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
-        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
-        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
-        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
-        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
         add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
         add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
         add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
@@ -67,12 +58,18 @@ public class Task {
                 '}';
     }
 
-
-    public static ArrayList<Task> getAll() {
-        return tasks;
+    public static void addTask(Task task, Context context) {
+        if (task != null) {
+//            Database.getDatabase(context).taskDao().insert(task);
+            tasks.add(task);
+        }
     }
 
-    public static ArrayList<Task> getAllOpen() {
+    public static List<Task> getAll(Context context) {
+        return Database.getDatabase(context).taskDao().getAll();
+    }
+
+    public static List<Task> getAllOpen(Context context) {
         ArrayList<Task> openTasks = new ArrayList<>();
 
         for (Task task : tasks) {
@@ -81,6 +78,8 @@ public class Task {
             }
         }
         return openTasks;
+
+//        return Database.getDatabase(context).taskDao().getAll();
     }
 
     public static ArrayList<Task> getAllClosed() {
@@ -94,6 +93,30 @@ public class Task {
         return openTasks;
     }
 
+
+    public Task(String title) {
+        this.title = title;
+        this.done = false;
+    }
+
+    public Task(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.done = false;
+    }
+
+    public Task(String title, Date date) {
+        this.title = title;
+        this.date = date;
+        this.done = false;
+    }
+
+    public Task(String title, String description, Date date) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.done = false;
+    }
 
     public Task(String title, Date date, Label label) {
         this.title = title;

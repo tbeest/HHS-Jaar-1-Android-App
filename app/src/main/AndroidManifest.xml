@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Gr11ToDay"
         tools:targetApi="31" >
         <activity
-            android:name=".task.OpenedTask"
+            android:name=".task.AddTaskActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
