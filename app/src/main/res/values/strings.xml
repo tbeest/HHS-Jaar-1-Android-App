@@ -25,5 +25,6 @@
     <string name="taskDateHint">Add date and time</string>
     <string name="errorAlreadyHere">You\'re already here</string>
     <string name="errorTitleRequired">Error: a title is required</string>
+    <string name="TooltipSignOut">Sign out</string>
 
 </resources>

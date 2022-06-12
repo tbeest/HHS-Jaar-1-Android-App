@@ -33,6 +33,24 @@ public class Task {
         add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
         add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
         add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
+        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
+        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
+        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
+        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
+        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
+        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
+        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
+        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
+        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
+        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
+        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
+        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
+        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
+        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
+        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
+        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
+        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
+        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
     }};
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");

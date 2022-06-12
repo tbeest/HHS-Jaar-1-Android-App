@@ -15,9 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Task;
+import com.example.gr11today.task.OpenedTask;
 
 public class ToDoTasks extends AppCompatActivity {
 
@@ -56,5 +58,13 @@ public class ToDoTasks extends AppCompatActivity {
 
     public void alreadyOpen(View view){
         Toast.makeText(this, R.string.errorAlreadyHere, Toast.LENGTH_SHORT).show();
+    }
+
+    public void addTask(View view) {
+        startActivity(new Intent(ToDoTasks.this, OpenedTask.class));
+    }
+
+    public void signOut(View view) {
+        startActivity(new Intent(ToDoTasks.this, MainActivity.class));
     }
 }

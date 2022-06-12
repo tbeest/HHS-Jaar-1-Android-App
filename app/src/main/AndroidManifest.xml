@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Gr11ToDay"
         tools:targetApi="31" >
         <activity
-            android:name=".tasks.OpenTasks"
+            android:name=".task.OpenedTask"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -26,7 +26,7 @@
         android:name=".tasks.ClosedTasks"
         android:exported="false" />
         <activity
-            android:name=".task.OpenedTask"
+            android:name=".tasks.ToDoTasks"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

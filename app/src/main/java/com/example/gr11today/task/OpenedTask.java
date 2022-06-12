@@ -2,6 +2,7 @@ package com.example.gr11today.task;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gr11today.R;
+import com.example.gr11today.tasks.ToDoTasks;
 
 import java.util.Calendar;
 
@@ -52,6 +54,10 @@ public class OpenedTask extends AppCompatActivity implements DatePickerDialog.On
         }
 
         System.out.println(title);
+    }
+
+    public void cancel(View view) {
+        startActivity(new Intent(OpenedTask.this, ToDoTasks.class));
     }
 
 

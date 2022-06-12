@@ -11,12 +11,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasks_list"
         android:layout_width="0dp"
-        android:layout_height="604dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTitleId"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -31,50 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
-
-    <ImageView
-        android:id="@+id/task_manager_settings_id"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/Settings"
-        android:tooltipText="@string/Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019"
-        app:srcCompat="@drawable/settings" />
-
-    <ImageView
-        android:id="@+id/task_manager_filter_id"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:clickable="true"
-        android:contentDescription="@string/tooltipFilterTasks"
-        android:tooltipText="@string/tooltipFilterTasks"
-        app:layout_constraintBottom_toTopOf="@+id/task_manager_plus_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/filter" />
-
-    <ImageView
-        android:id="@+id/task_manager_plus_id"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:clickable="true"
-        android:contentDescription="@string/tooltipAddNewTask"
-        android:tooltipText="@string/tooltipAddNewTask"
-        app:layout_constraintBottom_toBottomOf="@+id/tasks_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/plus" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -91,8 +48,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="#6e14ef"
             android:onClick="alreadyOpen"
-            android:text="@string/openTasksButton" />
+            android:text="@string/openTasksButton"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/closedTasksButton"
@@ -104,5 +63,48 @@
             android:text="@string/closedTasksButton" />
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:clickable="true"
+        android:contentDescription="@string/tooltipAddNewTask"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="addTask"
+        android:tooltipText="@string/tooltipAddNewTask"
+        app:layout_constraintBottom_toBottomOf="@+id/tasks_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/filterTasksButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/tooltipFilterTasks"
+        android:hapticFeedbackEnabled="true"
+        android:tooltipText="@string/tooltipFilterTasks"
+        app:layout_constraintBottom_toTopOf="@+id/addTaskButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_filter_alt_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/signOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/TooltipSignOut"
+        android:onClick="signOut"
+        android:tooltipText="@string/TooltipSignOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
