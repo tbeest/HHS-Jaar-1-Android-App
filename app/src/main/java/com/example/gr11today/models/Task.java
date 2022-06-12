@@ -1,5 +1,6 @@
 package com.example.gr11today.models;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public class Task {
     private User user;
     private Label label;
     private Boolean done;
+
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
 
     @Override
     public String toString() {
@@ -31,7 +35,7 @@ public class Task {
         add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
         add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
         add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
-        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4")));
+        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
         add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
         add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
     }};
@@ -39,12 +43,41 @@ public class Task {
     public static ArrayList<Task> getAll() {
         return tasks;
     }
+    public static ArrayList<Task> getAllOpen() {
+        ArrayList<Task> openTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task.getDone() == false ){
+                openTasks.add(task);
+            }
+        }
+        return openTasks;
+    }
+
+    public static ArrayList<Task> getAllClosed() {
+        ArrayList<Task> openTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task.getDone() == true ){
+                openTasks.add(task);
+            }
+        }
+        return openTasks;
+    }
+
 
     public Task(String title, Date date, Label label) {
         this.title = title;
         this.date = date;
         this.label = label;
         this.done = false;
+    }
+
+    public Task(String title, Date date, Label label, Boolean done) {
+        this.title = title;
+        this.date = date;
+        this.label = label;
+        this.done = done;
     }
 
     public Integer getId() {
@@ -84,11 +117,19 @@ public class Task {
     }
 
     public String getDateString() {
-        String strDate = "" + date;
+        String strDate = sdf.format(this.date);
         return strDate;
     }
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
     }
 }

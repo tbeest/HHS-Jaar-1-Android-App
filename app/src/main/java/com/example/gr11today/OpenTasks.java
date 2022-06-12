@@ -35,7 +35,7 @@ public class OpenTasks extends AppCompatActivity {
                 });
 
         recyclerView = findViewById(R.id.tasks_list);
-        TaskRowAdapter adapter = new TaskRowAdapter(Task.getAll());
+        TaskRowAdapter adapter = new TaskRowAdapter(Task.getAllOpen());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
