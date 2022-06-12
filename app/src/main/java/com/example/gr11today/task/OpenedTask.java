@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +39,19 @@ public class OpenedTask extends AppCompatActivity implements DatePickerDialog.On
                 datePickerDialog.show();
             }
         });
+    }
+
+    public void save(View view) {
+        EditText titleET = findViewById(R.id.task_title);
+        EditText descriptionET = findViewById(R.id.task_description);
+
+        String title = titleET.getText().toString();
+
+        if (title == null || title.isEmpty()) {
+            Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
+        }
+
+        System.out.println(title);
     }
 
 

@@ -21,6 +21,8 @@
     <string name="taskCancel">Annuleren</string>
     <string name="registerId">Registreren</string>
     <string name="taskDescriptionHint">Voeg omschrijving toe</string>
-    <string name="taskTitleHint">Geef titel</string>
-    <string name="taskDateHint">Stel datum en titel in</string>
+    <string name="taskTitleHint">Stel titel in</string>
+    <string name="taskDateHint">Voeg datum en titel toe</string>
+    <string name="errorAlreadyHere">Je bent hier al</string>
+    <string name="errorTitleRequired">Error: een titel is verplicht</string>
 </resources>

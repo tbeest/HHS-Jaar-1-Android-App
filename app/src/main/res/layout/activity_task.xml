@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:scrollbarSize="14dp"
-    tools:context=".tasks.OpenTasks">
+    tools:context=".tasks.ToDoTasks">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -38,9 +38,9 @@
                     android:id="@+id/task_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_weight="1"
                     android:background="@color/cardview_shadow_end_color"
                     android:hint="@string/taskTitleHint"
@@ -56,20 +56,21 @@
                     android:id="@+id/taskCheckBox"
                     android:layout_width="48dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="4dp"
                     android:checked="false"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <Button
                     android:id="@+id/task_date"
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
                     android:hint="@string/taskDateHint"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -93,12 +94,12 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
-                android:id="@+id/textView"
+                android:id="@+id/task_description"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
                 android:background="@color/cardview_shadow_end_color"
                 android:ems="10"
@@ -158,7 +159,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            tools:text="@string/taskEdit" />
+            android:onClick="save"
+            android:text="@string/taskSave" />
 
         <Button
             android:id="@+id/button2"
@@ -166,7 +168,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            tools:text="@string/taskClose" />
+            android:text="@string/taskCancel" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

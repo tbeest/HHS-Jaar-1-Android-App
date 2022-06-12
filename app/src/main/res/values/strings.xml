@@ -22,6 +22,8 @@
     <string name="taskCancel">Cancel</string>
     <string name="taskDescriptionHint">Add description</string>
     <string name="taskTitleHint">Set title</string>
-    <string name="taskDateHint">Set date and time</string>
+    <string name="taskDateHint">Add date and time</string>
+    <string name="errorAlreadyHere">You\'re already here</string>
+    <string name="errorTitleRequired">Error: a title is required</string>
 
 </resources>

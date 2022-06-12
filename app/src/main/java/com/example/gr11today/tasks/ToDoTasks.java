@@ -10,14 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Task;
 
-public class OpenTasks extends AppCompatActivity {
+public class ToDoTasks extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
@@ -28,7 +30,7 @@ public class OpenTasks extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_tasks);
+        setContentView(R.layout.activity_tasks_list);
         openTasksButtonId = findViewById(R.id.openTasksButton);
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
         titleId = findViewById(R.id.taskTitleId);
@@ -49,8 +51,10 @@ public class OpenTasks extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(OpenTasks.this, ClosedTasks.class)));
+        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ToDoTasks.this, ClosedTasks.class)));
     }
 
-
+    public void alreadyOpen(View view){
+        Toast.makeText(this, R.string.errorAlreadyHere, Toast.LENGTH_SHORT).show();
+    }
 }
