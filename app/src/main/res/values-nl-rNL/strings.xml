@@ -25,4 +25,5 @@
     <string name="taskDateHint">Voeg datum en titel toe</string>
     <string name="errorAlreadyHere">Je bent hier al</string>
     <string name="errorTitleRequired">Error: een titel is verplicht</string>
+    <string name="TooltipSignOut">Log uit</string>
 </resources>
