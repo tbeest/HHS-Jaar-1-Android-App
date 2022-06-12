@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr11today.models.User;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText userId, passwordId, validatePasswordId;
@@ -38,5 +40,22 @@ public class RegisterActivity extends AppCompatActivity {
 //            }
 //        }
         loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
+    }
+    public void register(View view) {
+        EditText usernameEt = findViewById(R.id.userId);
+        String username = usernameEt.getText().toString();
+
+        EditText passwordEt = findViewById(R.id.passwordId);
+        String password = passwordEt.getText().toString();
+
+        EditText validatePasswordEt = findViewById(R.id.validatePasswordId);
+        String validatePassword = validatePasswordEt.getText().toString();
+
+        User user = new User(username, password, validatePassword);
+
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
+
+        System.out.println(username + "\n" + password + "\n" + validatePassword);
     }
 }

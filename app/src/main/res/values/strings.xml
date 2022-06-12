@@ -5,7 +5,7 @@
     <string name="userId">Username</string>
     <string name="passwordId">Password</string>
     <string name="validatePasswordId">Validate Password</string>
-    <string name="registerUserText">Register User Title</string>
+    <string name="registerUserText">Register User</string>
     <string name="loginScreenId">Already have an account?</string>
     <string name="tooltipAddNewTask">Add new task</string>
     <string name="tooltipFilterTasks">Filter tasks by label</string>
