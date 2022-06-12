@@ -3,6 +3,7 @@ package com.example.gr11today.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
                 task.getDateString() :
                 null;
         holder.taskDate.setText(date);
+        holder.taskDone.setChecked(task.getDone());
     }
 
 
@@ -49,11 +51,13 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView taskTitle;
         private TextView taskDate;
+        private CheckBox taskDone;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTitle = itemView.findViewById(R.id.taskRow_task_title);
             taskDate = itemView.findViewById(R.id.taskRow_task_date);
+            taskDone = itemView.findViewById(R.id.taskCheckBox);
         }
     }
 }
