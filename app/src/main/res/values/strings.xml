@@ -2,8 +2,9 @@
     <string name="app_name" translatable="false">To do today</string>
     <string name="registerAccount">Register Account</string>
     <string name="signInId">Sign in</string>
-    <string name="userId">Username</string>
+    <string name="userId">Enter Username</string>
     <string name="passwordId">Password</string>
+    <string name="registerId">Register</string>
     <string name="validatePasswordId">Validate Password</string>
     <string name="registerUserText">Register User</string>
     <string name="loginScreenId">Already have an account?</string>
