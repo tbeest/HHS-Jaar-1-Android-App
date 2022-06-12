@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
@@ -22,6 +23,7 @@ public class OpenTasks extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     Button openTasksButtonId,closedTasksButtonId;
+    TextView titleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,9 @@ public class OpenTasks extends AppCompatActivity {
         setContentView(R.layout.activity_open_tasks);
         openTasksButtonId = findViewById(R.id.openTasksButton);
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
+        titleId = findViewById(R.id.taskTitleId);
+
+        titleId.setText(R.string.toDoTitleToDo);
 
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),

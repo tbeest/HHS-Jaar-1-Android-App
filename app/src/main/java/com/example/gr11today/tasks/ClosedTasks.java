@@ -3,6 +3,7 @@ package com.example.gr11today.tasks;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -22,7 +23,7 @@ public class ClosedTasks extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     Button openTasksButtonId,closedTasksButtonId;
-
+    TextView titleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,9 @@ public class ClosedTasks extends AppCompatActivity {
         setContentView(R.layout.activity_open_tasks);
         openTasksButtonId = findViewById(R.id.openTasksButton);
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
+        titleId = findViewById(R.id.taskTitleId);
+
+        titleId.setText(R.string.toDoTitleDone);
 
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),

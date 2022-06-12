@@ -12,4 +12,7 @@
     <string name="Settings">Instellingen</string>
     <string name="openTasksButton">Open Taken</string>
     <string name="closedTasksButton">Gesloten Taken</string>
+    <string name="toDoTitleToDo">Te Doen</string>
+    <string name="toDoTitleDone">Gedaan</string>
+    <string name="ToDoTitleTask">Taak</string>
 </resources>

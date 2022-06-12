@@ -12,5 +12,8 @@
     <string name="Settings">Settings</string>
     <string name="openTasksButton">Open Tasks</string>
     <string name="closedTasksButton">Closed Tasks</string>
+    <string name="toDoTitleToDo">To Do</string>
+    <string name="toDoTitleDone">Done</string>
+    <string name="ToDoTitleTask">Task</string>
 
 </resources>
