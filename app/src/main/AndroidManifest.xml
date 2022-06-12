@@ -20,10 +20,13 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".tasks.ClosedTasks"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+        android:name=".tasks.ClosedTasks"
+        android:exported="false" />
+        <activity
+            android:name=".task.OpenedTask"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

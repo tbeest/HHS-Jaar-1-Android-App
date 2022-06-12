@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">To do today</string>
     <string name="registerAccount">Register Account</string>
-    <string name="signInId" translatable="true">Sign in</string>
+    <string name="signInId">Sign in</string>
     <string name="userId">Enter Username</string>
     <string name="passwordId">Password</string>
     <string name="registerId">Register</string>
@@ -20,7 +20,7 @@
     <string name="taskClose">Close</string>
     <string name="taskSave">Save</string>
     <string name="taskCancel">Cancel</string>
-    <string name="taskDescriptionHint">Set description</string>
+    <string name="taskDescriptionHint">Add description</string>
     <string name="taskTitleHint">Set title</string>
     <string name="taskDateHint">Set date and time</string>
 

@@ -20,7 +20,7 @@
     <string name="taskSave">Opslaan</string>
     <string name="taskCancel">Annuleren</string>
     <string name="registerId">Registreren</string>
-    <string name="taskDescriptionHint">Geef omschrijving</string>
+    <string name="taskDescriptionHint">Voeg omschrijving toe</string>
     <string name="taskTitleHint">Geef titel</string>
     <string name="taskDateHint">Stel datum en titel in</string>
 </resources>
