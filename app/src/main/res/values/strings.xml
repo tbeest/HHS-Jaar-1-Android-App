@@ -26,5 +26,7 @@
     <string name="errorAlreadyHere">You\'re already here</string>
     <string name="errorTitleRequired">Error: a title is required</string>
     <string name="TooltipSignOut">Sign out</string>
+    <string name="passwordsNotMatch">Passwords do not match!</string>
+    <string name="passwordsDoMatch">Registered</string>
 
 </resources>
