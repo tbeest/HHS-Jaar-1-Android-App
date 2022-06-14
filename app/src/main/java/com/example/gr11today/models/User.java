@@ -3,15 +3,15 @@ package com.example.gr11today.models;
 import android.content.Context;
 
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
+import com.example.gr11today.Converters;
 import com.example.gr11today.Database;
 
 import java.util.List;
 
-@Entity(tableName = "users")
+@Entity
 public class User {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
@@ -21,12 +21,6 @@ public class User {
 
     @ColumnInfo(name = "password")
     private String password;
-
-    @Ignore
-    private Task task;
-    @Ignore
-    private Label label;
-
 
     public User() {
     }
