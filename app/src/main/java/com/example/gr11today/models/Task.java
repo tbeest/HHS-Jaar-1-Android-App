@@ -44,6 +44,7 @@ public class Task {
         add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
     }};
 
+    @Ignore
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
 
     @Override

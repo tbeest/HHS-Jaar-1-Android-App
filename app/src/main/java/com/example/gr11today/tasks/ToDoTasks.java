@@ -47,11 +47,11 @@ public class ToDoTasks extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         tasks.clear();
-                        tasks.addAll(Task.getAllOpen(getApplicationContext()));
+                        tasks.addAll(Task.getAll(getApplicationContext()));
                         recyclerView.getAdapter().notifyDataSetChanged();
                     }
                 });
-        tasks = Task.getAllOpen(this);
+        tasks = Task.getAll(this);
 
         recyclerView = findViewById(R.id.tasks_list);
         TaskRowAdapter adapter = new TaskRowAdapter(tasks);
