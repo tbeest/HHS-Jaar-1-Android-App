@@ -61,8 +61,8 @@ public class Task {
 
     public static void addTask(Task task, Context context) {
         if (task != null) {
-//            Database.getDatabase(context).taskDao().insert(task);
-            tasks.add(task);
+            Database.getDatabase(context).taskDao().insert(task);
+//            tasks.add(task);
         }
     }
 
