@@ -34,9 +34,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = data.get(position);
         holder.taskTitle.setText(task.getTitle());
-        String date = task.getDateString() != null ?
-                task.getDateString() :
-                null;
+        String date = task.getDateString();
         holder.taskDate.setText(date);
         holder.taskDone.setChecked(task.getDone());
     }

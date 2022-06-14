@@ -51,9 +51,11 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     public void save(View view) throws ParseException {
         EditText titleET = findViewById(R.id.task_title);
         EditText descriptionET = findViewById(R.id.task_description);
+        CheckBox taskCB = findViewById(R.id.taskCheckBox);
 
         String title = titleET.getText().toString();
         String description = descriptionET.getText().toString();
+        boolean status = taskCB.isChecked();
 
         if (title == null || title.isEmpty()) {
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
@@ -64,16 +66,18 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
                 date = df.parse(strDate);
 
                 System.out.println(date);
+
+                Task task = new Task(title, description, date, status);
+                task.addTask(task, this);
+            } else {
+                Task task = new Task(title, description, status);
+                task.addTask(task, this);
             }
 
 
             System.out.println(description);
             System.out.println(title);
 
-            Task task = new Task(title, description, date);
-            task.addTask(task, this);
-
-            System.out.println(task);
             Toast.makeText(this, "Added Task", Toast.LENGTH_SHORT).show();
             finish();
 //            startActivity(new Intent(AddTaskActivity.this, ToDoTasks.class));

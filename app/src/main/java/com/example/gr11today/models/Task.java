@@ -36,12 +36,12 @@ public class Task {
 
     @Ignore
     private static ArrayList<Task> tasks = new ArrayList<Task>() {{
-        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1")));
-        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2")));
-        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3")));
+        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1"), false));
+        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2"), false));
+        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3"), false));
         add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
-        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5")));
-        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6")));
+        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5"), false));
+        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6"), false));
     }};
 
     @Ignore
@@ -103,33 +103,26 @@ public class Task {
         this.done = false;
     }
 
-    public Task(String title, String description) {
+    public Task(String title, String description, boolean done) {
         this.title = title;
         this.description = description;
-        this.done = false;
+        this.done = done;
     }
 
-    public Task(String title, Date date) {
+    public Task(String title, Date date, boolean done) {
         this.title = title;
         this.date = date;
-        this.done = false;
+        this.done = done;
     }
 
-    public Task(String title, String description, Date date) {
+    public Task(String title, String description, Date date, boolean done) {
         this.title = title;
         this.description = description;
         this.date = date;
-        this.done = false;
+        this.done = done;
     }
 
-    public Task(String title, Date date, Label label) {
-        this.title = title;
-        this.date = date;
-        this.label = label;
-        this.done = false;
-    }
-
-    public Task(String title, Date date, Label label, Boolean done) {
+    public Task(String title, Date date, Label label, boolean done) {
         this.title = title;
         this.date = date;
         this.label = label;
@@ -176,7 +169,7 @@ public class Task {
     }
 
     public String getDateString() {
-        String strDate = sdf.format(this.date);
+        String strDate = (this.date != null) ? sdf.format(this.date) : null;
         return strDate;
     }
 
