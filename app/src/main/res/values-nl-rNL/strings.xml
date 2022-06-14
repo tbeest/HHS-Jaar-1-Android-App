@@ -26,4 +26,9 @@
     <string name="errorAlreadyHere">Je bent hier al</string>
     <string name="errorTitleRequired">Error: een titel is verplicht</string>
     <string name="TooltipSignOut">Log uit</string>
+    <string name="passwordsNotMatch">Wachtwoorden zijn niet gelijk!</string>
+    <string name="passwordsNotMatch">W</string>
+    <string name="passwordsNotMatch">W</string>
+    <string name="passwordsDoMatch">Geregistreerd</string>
+    <string name="passwordsDoMatch">G</string>
 </resources>
