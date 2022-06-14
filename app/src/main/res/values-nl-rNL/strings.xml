@@ -29,4 +29,5 @@
     <string name="passwordsNotMatch">Wachtwoorden zijn niet gelijk!</string>
     <string name="passwordsDoMatch">Geregistreerd</string>
     <string name="tooltipLabelButton">Labels beheren</string>
+    <string name="passwordEmpty">Vul een wachtwoord in</string>
 </resources>

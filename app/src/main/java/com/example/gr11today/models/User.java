@@ -1,12 +1,12 @@
 package com.example.gr11today.models;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
-import java.io.Serializable;
 
 @Entity(tableName = "users")
-public class User implements Serializable {
+public class User {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
 
@@ -15,6 +15,11 @@ public class User implements Serializable {
 
     @ColumnInfo(name = "password")
     private String password;
+
+    @Ignore
+    private Task task;
+    @Ignore
+    private Label label;
 
 
     public User() {
@@ -31,7 +36,6 @@ public class User implements Serializable {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", validatePassword='" + '\'' +
                 '}';
     }
 
