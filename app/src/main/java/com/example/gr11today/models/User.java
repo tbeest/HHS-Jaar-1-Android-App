@@ -1,8 +1,19 @@
 package com.example.gr11today.models;
 
-public class User {
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.ColumnInfo;
+import java.io.Serializable;
+
+@Entity(tableName = "users")
+public class User implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
+
+    @ColumnInfo(name = "name")
     private String username;
+
+    @ColumnInfo(name = "password")
     private String password;
 
 
