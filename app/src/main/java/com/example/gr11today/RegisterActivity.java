@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr11today.daos.UserDao;
 import com.example.gr11today.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -31,8 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
 
     }
-}
-/*
+
     public void register(View view) {
         registerId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,22 +40,24 @@ public class RegisterActivity extends AppCompatActivity {
                 User user = new User();
                 user.setUsername(userId.getText().toString());
                 user.setPassword(passwordId.getText().toString());
-                if (validateInput(User)) {
+                if (validateInput(user)) {
                     Database database = Database.getDatabase(getApplicationContext());
-
+//                    final UserDao userDao = database.
+                } else {
+                    Toast.makeText(getApplicationContext(), "Fill in all fields!", Toast.LENGTH_SHORT).show();
+                }
             }
-        }
 
-    private Boolean validateInput(User user) {
-        if (user.getUsername().isEmpty() ||
-            user.getPassword().isEmpty()) {
-            return false;
-        }
-        return true;
+            private Boolean validateInput(User user) {
+                return !user.getUsername().isEmpty() &&
+                        !user.getPassword().isEmpty();
+            }
+        });
     }
+}
 
 
-        EditText usernameEt = findViewById(R.id.userId);
+/*        EditText usernameEt = findViewById(R.id.userId);
         String username = usernameEt.getText().toString();
 
         EditText passwordEt = findViewById(R.id.passwordId);

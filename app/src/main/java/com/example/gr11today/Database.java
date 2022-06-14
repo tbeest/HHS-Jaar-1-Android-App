@@ -15,6 +15,7 @@ import com.example.gr11today.models.Task;
 public abstract class Database extends RoomDatabase {
     public abstract TaskDao taskDao();
 
+
     public static Database getDatabase(Context context) {
         Database database;
 
