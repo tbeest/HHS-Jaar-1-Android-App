@@ -10,6 +10,7 @@ import androidx.room.TypeConverters;
 import com.example.gr11today.Converters;
 import com.example.gr11today.Database;
 
+import java.net.ConnectException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -62,8 +63,11 @@ public class Task {
     public static void addTask(Task task, Context context) {
         if (task != null) {
             Database.getDatabase(context).taskDao().insert(task);
-//            tasks.add(task);
         }
+    }
+
+    public static void updateTask(Task task, Context contact) {
+
     }
 
     public static List<Task> getAll(Context context) {

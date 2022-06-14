@@ -64,7 +64,7 @@ public class ToDoTasks extends AppCompatActivity {
 
     public void setStatus(View view) {
         CheckBox taskCB = findViewById(R.id.taskCheckBox);
-        String status = taskCB.getText().toString();
+        boolean status = taskCB.isChecked();
 
 
         System.out.println(status);

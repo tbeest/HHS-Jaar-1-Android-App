@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="signInId" translatable="false">Aanmelden</string>
+    <string name="signInId">Aanmelden</string>
     <string name="userId">Gebruikersnaam</string>
     <string name="passwordId">Wachtwoord</string>
     <string name="validatePasswordId">Herhaal wachtwoord</string>

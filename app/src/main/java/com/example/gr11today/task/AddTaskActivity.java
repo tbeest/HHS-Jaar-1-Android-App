@@ -81,7 +81,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
 
     public void setStatus(View view) {
         CheckBox taskCB = findViewById(R.id.taskCheckBox);
-        String status = taskCB.getText().toString();
+        boolean status = taskCB.isChecked();
 
 
         System.out.println(status);
