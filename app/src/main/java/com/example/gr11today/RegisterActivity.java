@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import com.example.gr11today.models.User;
 
-import java.awt.font.NumericShaper;
-
 public class RegisterActivity extends AppCompatActivity {
 
     EditText userId, passwordId, validatePasswordId;
@@ -31,8 +29,30 @@ public class RegisterActivity extends AppCompatActivity {
         loginScreenId = findViewById(R.id.loginScreenId);
 
         loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
+
     }
     public void register(View view) {
+        registerId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                User user = new User();
+                user.setUsername(userId.getText().toString());
+                user.setPassword(passwordId.getText().toString());
+                if (validateInput(User)) {
+                    Database database = Database.getDatabase(getApplicationContext());
+
+            }
+        }
+
+    private Boolean validateInput(User user) {
+        if (user.getUsername().isEmpty() ||
+            user.getPassword().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+
         EditText usernameEt = findViewById(R.id.userId);
         String username = usernameEt.getText().toString();
 
@@ -42,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText validatePasswordEt = findViewById(R.id.validatePasswordId);
         String validatePassword = validatePasswordEt.getText().toString();
 
-        User user = new User(username, password);
+        //User user = new User(username, password);
 
         //Intent intent = new Intent(this, MainActivity.class);
         //startActivity(intent);
@@ -50,6 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
         if (!password.equals(validatePassword)) {
             Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
         } else {
+            Toast.makeText(this, R.string.passwordsDoMatch, Toast.LENGTH_SHORT).show();
+        }
+
+        if (password.isEmpty()) {
             Toast.makeText(this, R.string.passwordsDoMatch, Toast.LENGTH_SHORT).show();
         }
     }
