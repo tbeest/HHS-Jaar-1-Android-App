@@ -31,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
         loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
 
     }
+}
+/*
     public void register(View view) {
         registerId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,4 +79,4 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.passwordsDoMatch, Toast.LENGTH_SHORT).show();
         }
     }
-}
+}*/
