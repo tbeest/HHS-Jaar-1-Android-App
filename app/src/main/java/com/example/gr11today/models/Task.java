@@ -10,7 +10,6 @@ import androidx.room.TypeConverters;
 import com.example.gr11today.Converters;
 import com.example.gr11today.Database;
 
-import java.net.ConnectException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
