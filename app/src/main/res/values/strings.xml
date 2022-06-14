@@ -29,5 +29,6 @@
     <string name="passwordsNotMatch">Passwords do not match!</string>
     <string name="passwordsDoMatch">Registered</string>
     <string name="passwordEmpty">Please fill in a password</string>
+    <string name="tooltipLabelButton">Manage labels</string>
 
 </resources>

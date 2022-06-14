@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -76,6 +77,14 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
             finish();
 
         }
+    }
+
+    public void setStatus(View view) {
+        CheckBox taskCB = findViewById(R.id.taskCheckBox);
+        String status = taskCB.getText().toString();
+
+
+        System.out.println(status);
     }
 
     public void cancel(View view) {

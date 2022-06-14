@@ -28,4 +28,5 @@
     <string name="TooltipSignOut">Log uit</string>
     <string name="passwordsNotMatch">Wachtwoorden zijn niet gelijk!</string>
     <string name="passwordsDoMatch">Geregistreerd</string>
+    <string name="tooltipLabelButton">Labels beheren</string>
 </resources>

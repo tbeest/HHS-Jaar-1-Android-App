@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class ToDoTasks extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Task> tasks;
 
-    Button openTasksButtonId,closedTasksButtonId;
+    Button openTasksButtonId, closedTasksButtonId;
     TextView titleId;
 
     @Override
@@ -43,14 +44,14 @@ public class ToDoTasks extends AppCompatActivity {
 
         titleId.setText(R.string.toDoTitleToDo);
 
-        launcher = registerForActivityResult( new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        tasks.clear();
-                        tasks.addAll(Task.getAll(getApplicationContext()));
-                        recyclerView.getAdapter().notifyDataSetChanged();
-                    }
-                });
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                tasks.clear();
+                tasks.addAll(Task.getAll(getApplicationContext()));
+                recyclerView.getAdapter().notifyDataSetChanged();
+            }
+        });
         tasks = Task.getAll(this);
 
         recyclerView = findViewById(R.id.tasks_list);
@@ -61,7 +62,15 @@ public class ToDoTasks extends AppCompatActivity {
         closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ToDoTasks.this, ClosedTasks.class)));
     }
 
-    public void alreadyOpen(View view){
+    public void setStatus(View view) {
+        CheckBox taskCB = findViewById(R.id.taskCheckBox);
+        String status = taskCB.getText().toString();
+
+
+        System.out.println(status);
+    }
+
+    public void alreadyOpen(View view) {
         Toast.makeText(this, R.string.errorAlreadyHere, Toast.LENGTH_SHORT).show();
     }
 
