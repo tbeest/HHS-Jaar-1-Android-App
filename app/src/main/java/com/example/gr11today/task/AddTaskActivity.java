@@ -70,12 +70,13 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
             System.out.println(description);
             System.out.println(title);
 
-            Task task = new Task(title,description,date);
+            Task task = new Task(title, description, date);
             task.addTask(task, this);
 
             System.out.println(task);
+            Toast.makeText(this, "Added Task", Toast.LENGTH_SHORT).show();
             finish();
-
+//            startActivity(new Intent(AddTaskActivity.this, ToDoTasks.class));
         }
     }
 

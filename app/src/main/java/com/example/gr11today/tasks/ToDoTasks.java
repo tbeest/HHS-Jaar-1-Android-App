@@ -38,21 +38,26 @@ public class ToDoTasks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks_list);
 
-        openTasksButtonId = findViewById(R.id.openTasksButton);
-        closedTasksButtonId = findViewById(R.id.closedTasksButton);
-        titleId = findViewById(R.id.taskTitleId);
-
-        titleId.setText(R.string.toDoTitleToDo);
-
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
                 tasks.clear();
                 tasks.addAll(Task.getAll(getApplicationContext()));
                 recyclerView.getAdapter().notifyDataSetChanged();
+                System.out.println("Refresh");
             }
         });
+
+        openTasksButtonId = findViewById(R.id.openTasksButton);
+        closedTasksButtonId = findViewById(R.id.closedTasksButton);
+        titleId = findViewById(R.id.taskTitleId);
+
+        titleId.setText(R.string.toDoTitleToDo);
+
+
         tasks = Task.getAll(this);
+
+        System.out.println("OnCreate");
 
         recyclerView = findViewById(R.id.tasks_list);
         TaskRowAdapter adapter = new TaskRowAdapter(tasks);
