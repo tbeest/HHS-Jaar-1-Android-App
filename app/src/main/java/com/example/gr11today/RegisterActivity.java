@@ -44,21 +44,27 @@ public class RegisterActivity extends AppCompatActivity {
 //            @Override
         //public void onClick (View v){
 
-            if (Validate.validateInput(userStr) && Validate.validateInput(passwordStr) && Validate.validateInput(validatePasswordStr) && Validate.checkIfEqual(passwordStr, validatePasswordStr)) {
-                User user = new User();
-                user.setUsername(userStr);
-                user.setPassword(passwordStr);
-                Database database = Database.getDatabase(getApplicationContext());
-                final UserDao userDao = database.userDao();
-                new Thread(() -> {
-                    userDao.registerUser(user);
-                    runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User registered!", Toast.LENGTH_SHORT).show());
-                }).start();
-            } else {
-                Toast.makeText(getApplicationContext(), "Fill in all fields correctly!", Toast.LENGTH_SHORT).show();
-            }
+        if (Validate.allFieldsEmpty(userStr, passwordStr, validatePasswordStr)) {
+            Toast.makeText(getApplicationContext(), "Field is empty", Toast.LENGTH_SHORT).show();
+            return;
         }
+        if (!Validate.checkIfEqual(passwordStr, validatePasswordStr)) {
+            Toast.makeText(getApplicationContext(), "Passwords do not match!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        User user = new User();
+        user.setUsername(userStr);
+        user.setPassword(passwordStr);
+        Database database = Database.getDatabase(getApplicationContext());
+        final UserDao userDao = database.userDao();
+        new Thread(() -> {
+            userDao.registerUser(user);
+            runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User registered!", Toast.LENGTH_SHORT).show());
+        }).start();
     }
+}
+
+
 
 
 /*else if (!user.getPassword().equals(validatePasswordStr)){
