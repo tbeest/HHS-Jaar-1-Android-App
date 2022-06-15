@@ -19,5 +19,7 @@ public class Label {
         this.taskid = taskid;
     }
 
-
+    public Label(String context) {
+        this.context = context;
+    }
 }
