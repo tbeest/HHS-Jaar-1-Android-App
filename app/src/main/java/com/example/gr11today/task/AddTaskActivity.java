@@ -59,7 +59,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     public void save(View view) throws ParseException {
         EditText titleET = findViewById(R.id.task_title);
         EditText descriptionET = findViewById(R.id.task_description);
-        CheckBox taskCB = findViewById(R.id.taskCheckBox);
+        CheckBox taskCB = findViewById(R.id.task_checkBox);
 
         String title = titleET.getText().toString();
         String description = descriptionET.getText().toString();
@@ -93,7 +93,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void setStatus(View view) {
-        CheckBox taskCB = findViewById(R.id.taskCheckBox);
+        CheckBox taskCB = findViewById(R.id.task_checkBox);
         boolean status = taskCB.isChecked();
 
 
