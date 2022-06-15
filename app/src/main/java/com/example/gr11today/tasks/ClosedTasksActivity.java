@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,27 @@ public class ClosedTasksActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ClosedTasksActivity.this, OpenTasksActivity.class)));
+    }
+
+    public void gotoEditTask(View view) {
+        Intent intent = new Intent(ClosedTasksActivity.this, AddTaskActivity.class);
+
+        Integer taskId = (Integer) view.getTag();
+        String taskIdStr = taskId + "";
+
+        System.out.println("Passed task ID int:" + taskId + "Passed task ID str: " + taskIdStr);
+
+        intent.putExtra("ID", taskIdStr);
+
+        startActivity(intent);
+    }
+
+    public void setStatus(View view) {
+        CheckBox taskCB = findViewById(R.id.task_checkBox);
+        boolean status = taskCB.isChecked();
+
+
+        System.out.println(status);
     }
 
     public void alreadyOpen(View view) {

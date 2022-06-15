@@ -30,4 +30,5 @@
     <string name="passwordsDoMatch">Registered</string>
     <string name="tooltipLabelButton">Manage labels</string>
     <string name="passwordEmpty">Please fill in a password</string>
+    <string name="AddTaskTaskAdded">Added Task</string>
 </resources>

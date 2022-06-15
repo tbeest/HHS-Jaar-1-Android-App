@@ -2,6 +2,7 @@ package com.example.gr11today.task;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.gr11today.Database;
 import com.example.gr11today.R;
 import com.example.gr11today.models.Task;
 
@@ -25,25 +27,44 @@ import java.util.Date;
 
 
 public class AddTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    Button button;
+    Button dateB;
     int day, month, year, hour, minute;
     int myDay, myMonth, myYear, myHour, myMinute;
-    String strDate;
+    String taskIdStr, strDate;
+    int taskId;
+    EditText titleET, descriptionET;
+    CheckBox taskCB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
+        System.out.println("OnCreate AddTaskActivity");
+
         Intent intent = getIntent();
-        String title = intent.getStringExtra("TITLE");
-        if (title != null) {
-            EditText titleET = findViewById(R.id.task_title);
-            titleET.setText(title);
+        String taskIdStr = intent.getStringExtra("ID");
+        System.out.println("taskIdStr: " + taskIdStr);
+
+        if (taskIdStr != null) {
+            titleET = findViewById(R.id.task_title);
+            descriptionET = findViewById(R.id.task_description);
+            taskCB = findViewById(R.id.task_checkBox);
+            dateB = findViewById(R.id.task_date);
+
+            taskId = Integer.parseInt(taskIdStr);
+
+            Task task = Database.getDatabase(getApplicationContext()).taskDao().getById(taskId);
+
+            titleET.setText(task.getTitle());
+            descriptionET.setText(task.getDescription());
+            dateB.setText(task.getDateString());
+            taskCB.setChecked(task.getDone());
         }
 
-        button = findViewById(R.id.task_date);
-        button.setOnClickListener(new View.OnClickListener() {
+        dateB = findViewById(R.id.task_date);
+        dateB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
@@ -57,9 +78,9 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void save(View view) throws ParseException {
-        EditText titleET = findViewById(R.id.task_title);
-        EditText descriptionET = findViewById(R.id.task_description);
-        CheckBox taskCB = findViewById(R.id.task_checkBox);
+        titleET = findViewById(R.id.task_title);
+        descriptionET = findViewById(R.id.task_description);
+        taskCB = findViewById(R.id.task_checkBox);
 
         String title = titleET.getText().toString();
         String description = descriptionET.getText().toString();
@@ -86,7 +107,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
             System.out.println(description);
             System.out.println(title);
 
-            Toast.makeText(this, "Added Task", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.AddTaskTaskAdded, Toast.LENGTH_SHORT).show();
             finish();
 //            startActivity(new Intent(AddTaskActivity.this, ToDoTasks.class));
         }
@@ -123,7 +144,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         myHour = hourOfDay;
         myMinute = minute;
         strDate = String.format("%02d/%02d/%04d %02d:%02d", myDay, myMonth, myYear, myHour, myMinute);
-        button.setText(strDate);
+        dateB.setText(strDate);
     }
 }
 

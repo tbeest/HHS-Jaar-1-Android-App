@@ -76,25 +76,15 @@ public class OpenTasksActivity extends AppCompatActivity {
     }
 
 
-
     public void gotoEditTask(View view) {
         Intent intent = new Intent(OpenTasksActivity.this, AddTaskActivity.class);
 
-        rowId = findViewById(R.id.task_row_layout_id);
-        String taskIdStr = rowId.getTag().toString();
-        Integer taskId = Integer.parseInt(taskIdStr);
+        Integer taskId = (Integer) view.getTag();
+        String taskIdStr = taskId + "";
 
-        System.out.println("Passed task ID:" + taskId);
+        System.out.println("Passed task ID int:" + taskId + "Passed task ID str: " + taskIdStr);
 
-        titleId = findViewById(R.id.task_title);
-        String title = titleId.getText().toString();
-
-        TextView dateTV = findViewById(R.id.task_date);
-        String strDate = dateTV.getText().toString();
-
-        if (title != null || !title.isEmpty()) {
-            intent.putExtra("ID", title);
-        }
+        intent.putExtra("ID", taskIdStr);
 
         startActivity(intent);
     }
