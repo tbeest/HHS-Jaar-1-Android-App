@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gr11today.daos.UserDao;
 import com.example.gr11today.models.User;
 import com.example.gr11today.tasks.OpenTasksActivity;
 
