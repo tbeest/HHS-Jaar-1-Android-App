@@ -6,9 +6,9 @@ public class Validate {
 
     public static Boolean validateInput(String input) {
         if (input.isEmpty()) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static Boolean allFieldsEmpty(String input1, String input2, String input3) {

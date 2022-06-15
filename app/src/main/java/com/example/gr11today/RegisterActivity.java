@@ -15,7 +15,7 @@ import com.example.gr11today.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText userIdET, passwordIdET, validatePasswordIdET;
+    EditText userIdEt, passwordIdEt, validatePasswordIdEt;
     TextView loginScreenId;
     Button registerId;
 
@@ -23,8 +23,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-
         registerId = findViewById(R.id.registerId);
         loginScreenId = findViewById(R.id.loginScreenId);
 
@@ -33,16 +31,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
-        userIdET = findViewById(R.id.userId);
-        String userStr = userIdET.getText().toString();
-        passwordIdET = findViewById(R.id.passwordId);
-        String passwordStr = passwordIdET.getText().toString();
-        validatePasswordIdET = findViewById(R.id.validatePasswordId);
-        String validatePasswordStr = validatePasswordIdET.getText().toString();
-
-//        registerId.setOnClickListener(new View.OnClickListener() {
-//            @Override
-        //public void onClick (View v){
+        userIdEt = findViewById(R.id.userId);
+        String userStr = userIdEt.getText().toString();
+        passwordIdEt = findViewById(R.id.passwordId);
+        String passwordStr = passwordIdEt.getText().toString();
+        validatePasswordIdEt = findViewById(R.id.validatePasswordId);
+        String validatePasswordStr = validatePasswordIdEt.getText().toString();
 
         if (Validate.allFieldsEmpty(userStr, passwordStr, validatePasswordStr)) {
             Toast.makeText(getApplicationContext(), "Field is empty", Toast.LENGTH_SHORT).show();
@@ -52,6 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Passwords do not match!", Toast.LENGTH_SHORT).show();
             return;
         }
+        User userInDb = Database.getDatabase(getApplicationContext()).userDao().getByUsername(userStr);
+        if (userInDb != null) {
+            Toast.makeText(getApplicationContext(), "Username already exists!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         User user = new User();
         user.setUsername(userStr);
         user.setPassword(passwordStr);
@@ -63,36 +63,3 @@ public class RegisterActivity extends AppCompatActivity {
         }).start();
     }
 }
-
-
-
-
-/*else if (!user.getPassword().equals(validatePasswordStr)){
-        Toast.makeText(getApplicationContext(), "Password does not match!", Toast.LENGTH_SHORT).show();
-        System.out.println("kom ik hier?");*/
-
-/*        EditText usernameEt = findViewById(R.id.userId);
-        String username = usernameEt.getText().toString();
-
-        EditText passwordEt = findViewById(R.id.passwordId);
-        String password = passwordEt.getText().toString();
-
-        EditText validatePasswordEt = findViewById(R.id.validatePasswordId);
-        String validatePassword = validatePasswordEt.getText().toString();
-
-        //User user = new User(username, password);
-
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
-
-        if (!password.equals(validatePassword)) {
-            Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, R.string.passwordsDoMatch, Toast.LENGTH_SHORT).show();
-        }
-
-        if (password.isEmpty()) {
-            Toast.makeText(this, R.string.passwordsDoMatch, Toast.LENGTH_SHORT).show();
-        }
-    }
-}*/

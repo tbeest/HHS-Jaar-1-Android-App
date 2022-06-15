@@ -10,9 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr11today.daos.UserDao;
+import com.example.gr11today.models.User;
+import com.example.gr11today.tasks.OpenTasksActivity;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText userId, passwordId;
+    EditText userIdEt, passwordIdEt;
     TextView registerAccount;
     Button signInId;
 
@@ -20,12 +24,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userId = findViewById(R.id.userId);
-        passwordId = findViewById(R.id.passwordId);
+        userIdEt = findViewById(R.id.userId);
+        passwordIdEt = findViewById(R.id.passwordId);
         registerAccount = findViewById(R.id.registerAccount);
         signInId = findViewById(R.id.signInId);
 
-        registerAccount.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
+        signInId.setOnClickListener(v -> loginIn(v));
+    }
 
+    public void loginIn(View view) {
+        userIdEt = findViewById(R.id.userId);
+        String userStr = userIdEt.getText().toString();
+        passwordIdEt = findViewById(R.id.passwordId);
+        String passwordStr = passwordIdEt.getText().toString();
+
+
+        if (Validate.validateInput(userStr) && Validate.validateInput(passwordStr)) {
+            Toast.makeText(getApplicationContext(), "Field is empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        User userInDb = Database.getDatabase(getApplicationContext()).userDao().getByUsername(userStr);
+        if (userInDb == null) {
+            Toast.makeText(getApplicationContext(), "Username doesn't exists!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (userInDb.getUsername().equals(userStr) &&
+            userInDb.getPassword().equals(passwordStr)) {
+            Intent intent = new Intent(this, OpenTasksActivity.class);
+            startActivity(intent);
+        }
     }
 }
