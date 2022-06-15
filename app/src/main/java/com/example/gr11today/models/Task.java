@@ -33,17 +33,6 @@ public class Task {
     @Ignore
     private Label label;
 
-
-    @Ignore
-    private static ArrayList<Task> tasks = new ArrayList<Task>() {{
-        add(new Task("Task1", Calendar.getInstance().getTime(), new Label("Label1"), false));
-        add(new Task("Task2", Calendar.getInstance().getTime(), new Label("Label2"), false));
-        add(new Task("Task3", Calendar.getInstance().getTime(), new Label("Label3"), false));
-        add(new Task("Task4", Calendar.getInstance().getTime(), new Label("Label4"), true));
-        add(new Task("Task5", Calendar.getInstance().getTime(), new Label("Label5"), false));
-        add(new Task("Task6", Calendar.getInstance().getTime(), new Label("Label6"), false));
-    }};
-
     @Ignore
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
 
@@ -74,27 +63,11 @@ public class Task {
     }
 
     public static List<Task> getAllOpen(Context context) {
-        ArrayList<Task> openTasks = new ArrayList<>();
-
-        for (Task task : tasks) {
-            if (task.getDone() == false) {
-                openTasks.add(task);
-            }
-        }
-        return openTasks;
-
-//        return Database.getDatabase(context).taskDao().getAll();
+        return Database.getDatabase(context).taskDao().getAllOpen();
     }
 
-    public static ArrayList<Task> getAllClosed() {
-        ArrayList<Task> openTasks = new ArrayList<>();
-
-        for (Task task : tasks) {
-            if (task.getDone() == true) {
-                openTasks.add(task);
-            }
-        }
-        return openTasks;
+    public static List<Task> getAllClosed(Context context) {
+        return Database.getDatabase(context).taskDao().getAllClosed();
     }
 
 

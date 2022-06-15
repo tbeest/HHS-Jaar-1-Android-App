@@ -42,7 +42,7 @@ public class OpenTasksActivity extends AppCompatActivity {
             @Override
             public void onActivityResult(ActivityResult result) {
                 tasks.clear();
-                tasks.addAll(Task.getAll(getApplicationContext()));
+                tasks.addAll(Task.getAllOpen(getApplicationContext()));
                 recyclerView.getAdapter().notifyDataSetChanged();
                 System.out.println("Refresh");
             }
@@ -54,8 +54,7 @@ public class OpenTasksActivity extends AppCompatActivity {
 
         titleId.setText(R.string.toDoTitleToDo);
 
-
-        tasks = Task.getAll(this);
+        tasks = Task.getAllOpen(this);
 
         System.out.println("OnCreate");
 

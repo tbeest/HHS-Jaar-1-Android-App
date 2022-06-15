@@ -26,7 +26,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
 
-    Button openTasksButtonId,closedTasksButtonId;
+    Button openTasksButtonId, closedTasksButtonId;
     TextView titleId;
 
     @Override
@@ -49,14 +49,14 @@ public class ClosedTasksActivity extends AppCompatActivity {
                 });
 
         recyclerView = findViewById(R.id.tasks_list);
-        TaskRowAdapter adapter = new TaskRowAdapter(Task.getAllClosed());
+        TaskRowAdapter adapter = new TaskRowAdapter(Task.getAllClosed(this));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ClosedTasksActivity.this, OpenTasksActivity.class)));
     }
 
-    public void alreadyOpen(View view){
+    public void alreadyOpen(View view) {
         Toast.makeText(this, R.string.errorAlreadyHere, Toast.LENGTH_SHORT).show();
     }
 

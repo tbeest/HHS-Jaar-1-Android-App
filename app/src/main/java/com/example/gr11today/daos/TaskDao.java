@@ -15,6 +15,12 @@ public interface TaskDao {
     @Query("SELECT * FROM task")
     List<Task> getAll();
 
+    @Query("SELECT * FROM task WHERE done == 0")
+    List<Task> getAllOpen();
+
+    @Query("SELECT * FROM task WHERE done == 1")
+    List<Task> getAllClosed();
+
     @Query("SELECT * FROM task WHERE id = :id")
     Task getById(int id);
 
