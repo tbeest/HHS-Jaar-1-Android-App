@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TextView registerAccount;
     Button signInId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         registerAccount = findViewById(R.id.registerAccount);
         signInId = findViewById(R.id.signInId);
 
+        registerAccount.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
         signInId.setOnClickListener(v -> loginIn(v));
     }
 
