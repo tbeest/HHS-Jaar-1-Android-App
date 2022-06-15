@@ -24,7 +24,7 @@ import com.example.gr11today.task.AddTaskActivity;
 
 import java.util.List;
 
-public class ToDoTasks extends AppCompatActivity {
+public class OpenTasksActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
@@ -64,7 +64,23 @@ public class ToDoTasks extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ToDoTasks.this, ClosedTasks.class)));
+        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(OpenTasksActivity.this, ClosedTasksActivity.class)));
+    }
+
+    public void gotoEditTask(View view) {
+        Intent intent = new Intent(OpenTasksActivity.this, AddTaskActivity.class);
+
+        TextView titleTV = findViewById(R.id.task_title);
+        String title = titleTV.getText().toString();
+
+        TextView dateTV = findViewById(R.id.task_date);
+        String strDate = dateTV.getText().toString();
+
+        if (title != null || !title.isEmpty()) {
+            intent.putExtra("TITLE", title);
+        }
+
+        startActivity(intent);
     }
 
     public void setStatus(View view) {
@@ -80,10 +96,10 @@ public class ToDoTasks extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        startActivity(new Intent(ToDoTasks.this, AddTaskActivity.class));
+        startActivity(new Intent(OpenTasksActivity.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {
-        startActivity(new Intent(ToDoTasks.this, MainActivity.class));
+        startActivity(new Intent(OpenTasksActivity.this, MainActivity.class));
     }
 }

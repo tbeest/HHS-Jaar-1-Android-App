@@ -21,7 +21,7 @@ import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Task;
 import com.example.gr11today.task.AddTaskActivity;
 
-public class ClosedTasks extends AppCompatActivity {
+public class ClosedTasksActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
@@ -53,7 +53,7 @@ public class ClosedTasks extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ClosedTasks.this, ToDoTasks.class)));
+        openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ClosedTasksActivity.this, OpenTasksActivity.class)));
     }
 
     public void alreadyOpen(View view){
@@ -61,10 +61,10 @@ public class ClosedTasks extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        startActivity(new Intent(ClosedTasks.this, AddTaskActivity.class));
+        startActivity(new Intent(ClosedTasksActivity.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {
-        startActivity(new Intent(ClosedTasks.this, MainActivity.class));
+        startActivity(new Intent(ClosedTasksActivity.this, MainActivity.class));
     }
 }

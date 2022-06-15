@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:scrollbarSize="14dp"
-    tools:context=".tasks.ToDoTasks">
+    tools:context=".tasks.OpenTasksActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
