@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class OpenTasksActivity extends AppCompatActivity {
 
     Button openTasksButtonId, closedTasksButtonId;
     TextView titleId;
+    LinearLayout rowId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,15 @@ public class OpenTasksActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout rowId2 = findViewById(R.id.task_row_layout_id);
+        if (rowId2 != null) {
+            String taskIdStr = rowId2.getTag().toString();
+            Integer taskId = Integer.parseInt(taskIdStr);
+            System.out.println("OnCreate task ID:" + taskId);
+        } else {
+            System.out.println("OnCreate = null");
+        }
+
         openTasksButtonId = findViewById(R.id.openTasksButton);
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
         titleId = findViewById(R.id.taskTitleId);
@@ -55,8 +66,6 @@ public class OpenTasksActivity extends AppCompatActivity {
         titleId.setText(R.string.toDoTitleToDo);
 
         tasks = Task.getAllOpen(this);
-
-        System.out.println("OnCreate");
 
         recyclerView = findViewById(R.id.tasks_list);
         TaskRowAdapter adapter = new TaskRowAdapter(tasks);
@@ -66,24 +75,32 @@ public class OpenTasksActivity extends AppCompatActivity {
         closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(OpenTasksActivity.this, ClosedTasksActivity.class)));
     }
 
+
+
     public void gotoEditTask(View view) {
         Intent intent = new Intent(OpenTasksActivity.this, AddTaskActivity.class);
 
-        TextView titleTV = findViewById(R.id.task_title);
-        String title = titleTV.getText().toString();
+        rowId = findViewById(R.id.task_row_layout_id);
+        String taskIdStr = rowId.getTag().toString();
+        Integer taskId = Integer.parseInt(taskIdStr);
+
+        System.out.println("Passed task ID:" + taskId);
+
+        titleId = findViewById(R.id.task_title);
+        String title = titleId.getText().toString();
 
         TextView dateTV = findViewById(R.id.task_date);
         String strDate = dateTV.getText().toString();
 
         if (title != null || !title.isEmpty()) {
-            intent.putExtra("TITLE", title);
+            intent.putExtra("ID", title);
         }
 
         startActivity(intent);
     }
 
     public void setStatus(View view) {
-        CheckBox taskCB = findViewById(R.id.taskCheckBox);
+        CheckBox taskCB = findViewById(R.id.task_checkBox);
         boolean status = taskCB.isChecked();
 
 

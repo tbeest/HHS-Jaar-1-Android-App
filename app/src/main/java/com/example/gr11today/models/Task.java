@@ -70,24 +70,30 @@ public class Task {
         return Database.getDatabase(context).taskDao().getAllClosed();
     }
 
+    public Task() {
+    }
 
+    @Ignore
     public Task(String title) {
         this.title = title;
         this.done = false;
     }
 
+    @Ignore
     public Task(String title, String description, boolean done) {
         this.title = title;
         this.description = description;
         this.done = done;
     }
 
+    @Ignore
     public Task(String title, Date date, boolean done) {
         this.title = title;
         this.date = date;
         this.done = done;
     }
 
+    @Ignore
     public Task(String title, String description, Date date, boolean done) {
         this.title = title;
         this.description = description;
@@ -95,6 +101,7 @@ public class Task {
         this.done = done;
     }
 
+    @Ignore
     public Task(String title, Date date, Label label, boolean done) {
         this.title = title;
         this.date = date;
@@ -102,8 +109,6 @@ public class Task {
         this.done = done;
     }
 
-    public Task() {
-    }
 
     public Integer getId() {
         return id;
