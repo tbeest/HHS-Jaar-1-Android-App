@@ -42,15 +42,22 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setPassword(passwordId.getText().toString());
                 if (validateInput(user)) {
                     Database database = Database.getDatabase(getApplicationContext());
-//                    final UserDao userDao = database.
+                    final UserDao userDao = database.userDao();
+                    new Thread(() -> {
+                        userDao.registerUser(user);
+                        runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show());
+                    }).start();
                 } else {
                     Toast.makeText(getApplicationContext(), "Fill in all fields!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             private Boolean validateInput(User user) {
-                return !user.getUsername().isEmpty() &&
-                        !user.getPassword().isEmpty();
+                if (user.getUsername().isEmpty() ||
+                    user.getPassword().isEmpty()) {
+                    return false;
+                }
+                return true;
             }
         });
     }

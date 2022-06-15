@@ -19,6 +19,9 @@ public interface UserDao {
     User getById(int id);
 
     @Insert
+    void registerUser(User user);
+
+    @Insert
     void insert(User user);
 
     @Update
