@@ -15,7 +15,7 @@ import com.example.gr11today.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText userId, passwordId, validatePasswordId;
+    EditText userIdET, passwordIdET, validatePasswordIdET;
     TextView loginScreenId;
     Button registerId;
 
@@ -23,9 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        userId = findViewById(R.id.userId);
-        passwordId = findViewById(R.id.passwordId);
-        validatePasswordId = findViewById(R.id.validatePasswordId);
+
+
         registerId = findViewById(R.id.registerId);
         loginScreenId = findViewById(R.id.loginScreenId);
 
@@ -34,35 +33,37 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
-        registerId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        userIdET = findViewById(R.id.userId);
+        String userStr = userIdET.getText().toString();
+        passwordIdET = findViewById(R.id.passwordId);
+        String passwordStr = passwordIdET.getText().toString();
+        validatePasswordIdET = findViewById(R.id.validatePasswordId);
+        String validatePasswordStr = validatePasswordIdET.getText().toString();
+
+//        registerId.setOnClickListener(new View.OnClickListener() {
+//            @Override
+        //public void onClick (View v){
+
+            if (Validate.validateInput(userStr) && Validate.validateInput(passwordStr) && Validate.validateInput(validatePasswordStr) && Validate.checkIfEqual(passwordStr, validatePasswordStr)) {
                 User user = new User();
-                user.setUsername(userId.getText().toString());
-                user.setPassword(passwordId.getText().toString());
-                if (validateInput(user)) {
-                    Database database = Database.getDatabase(getApplicationContext());
-                    final UserDao userDao = database.userDao();
-                    new Thread(() -> {
-                        userDao.registerUser(user);
-                        runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show());
-                    }).start();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Fill in all fields!", Toast.LENGTH_SHORT).show();
-                }
+                user.setUsername(userStr);
+                user.setPassword(passwordStr);
+                Database database = Database.getDatabase(getApplicationContext());
+                final UserDao userDao = database.userDao();
+                new Thread(() -> {
+                    userDao.registerUser(user);
+                    runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User registered!", Toast.LENGTH_SHORT).show());
+                }).start();
+            } else {
+                Toast.makeText(getApplicationContext(), "Fill in all fields correctly!", Toast.LENGTH_SHORT).show();
             }
-
-            private Boolean validateInput(User user) {
-                if (user.getUsername().isEmpty() ||
-                    user.getPassword().isEmpty()) {
-                    return false;
-                }
-                return true;
-            }
-        });
+        }
     }
-}
 
+
+/*else if (!user.getPassword().equals(validatePasswordStr)){
+        Toast.makeText(getApplicationContext(), "Password does not match!", Toast.LENGTH_SHORT).show();
+        System.out.println("kom ik hier?");*/
 
 /*        EditText usernameEt = findViewById(R.id.userId);
         String username = usernameEt.getText().toString();
