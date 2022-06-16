@@ -23,10 +23,13 @@ import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Task;
 import com.example.gr11today.task.AddTaskActivity;
 
+import java.util.List;
+
 public class ClosedTasksActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
+    private List<Task> tasks;
 
     Button openTasksButtonId, closedTasksButtonId;
     TextView titleId;
@@ -40,6 +43,9 @@ public class ClosedTasksActivity extends AppCompatActivity {
         titleId = findViewById(R.id.taskTitleId);
 
         titleId.setText(R.string.toDoTitleDone);
+
+        tasks = Task.getAllOpen(this);
+
 
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -68,7 +74,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
 
         intent.putExtra("ID", taskIdStr);
 
-        startActivity(intent);
+        launcher.launch(intent);
     }
 
     public void setStatus(View view) {
@@ -86,6 +92,10 @@ public class ClosedTasksActivity extends AppCompatActivity {
         }
 
         Task.updateTask(task, this);
+
+        tasks.clear();
+        tasks.addAll(Task.getAllOpen(getApplicationContext()));
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
 
     public void alreadyOpen(View view) {
@@ -93,7 +103,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        startActivity(new Intent(ClosedTasksActivity.this, AddTaskActivity.class));
+        launcher.launch(new Intent(ClosedTasksActivity.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {

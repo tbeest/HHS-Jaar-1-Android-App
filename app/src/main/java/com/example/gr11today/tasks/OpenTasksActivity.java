@@ -40,6 +40,14 @@ public class OpenTasksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks_list);
+        openTasksButtonId = findViewById(R.id.openTasksButton);
+        closedTasksButtonId = findViewById(R.id.closedTasksButton);
+        titleId = findViewById(R.id.taskTitleId);
+
+        titleId.setText(R.string.toDoTitleToDo);
+
+        tasks = Task.getAllOpen(this);
+
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
@@ -51,22 +59,14 @@ public class OpenTasksActivity extends AppCompatActivity {
             }
         });
 
-        LinearLayout rowId2 = findViewById(R.id.task_row_layout_id);
+/*        LinearLayout rowId2 = findViewById(R.id.task_row_layout_id);
         if (rowId2 != null) {
             String taskIdStr = rowId2.getTag().toString();
             Integer taskId = Integer.parseInt(taskIdStr);
             System.out.println("OnCreate task ID:" + taskId);
         } else {
             System.out.println("OnCreate = null");
-        }
-
-        openTasksButtonId = findViewById(R.id.openTasksButton);
-        closedTasksButtonId = findViewById(R.id.closedTasksButton);
-        titleId = findViewById(R.id.taskTitleId);
-
-        titleId.setText(R.string.toDoTitleToDo);
-
-        tasks = Task.getAllOpen(this);
+        }*/
 
         recyclerView = findViewById(R.id.tasks_list);
         TaskRowAdapter adapter = new TaskRowAdapter(tasks);
@@ -87,7 +87,7 @@ public class OpenTasksActivity extends AppCompatActivity {
 
         intent.putExtra("ID", taskIdStr);
 
-        startActivity(intent);
+        launcher.launch(intent);
     }
 
     public void setStatus(View view) {
@@ -105,6 +105,10 @@ public class OpenTasksActivity extends AppCompatActivity {
         }
 
         Task.updateTask(task, this);
+
+        tasks.clear();
+        tasks.addAll(Task.getAllOpen(getApplicationContext()));
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
 
     public void alreadyOpen(View view) {
@@ -112,7 +116,7 @@ public class OpenTasksActivity extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        startActivity(new Intent(OpenTasksActivity.this, AddTaskActivity.class));
+        launcher.launch(new Intent(OpenTasksActivity.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {
