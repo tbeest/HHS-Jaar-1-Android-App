@@ -39,8 +39,10 @@ public class User {
                 '}';
     }
 
-  /*  public static List<User> getAll(Context context) {
-        return Database.getDatabase(context).userDao().getAll();
+/*    public static void addUser(User user, Context context) {
+        if (user != null) {
+            Database.getDatabase(context).userDao().insert(user);
+        }
     }*/
 
     public Integer getId() {
@@ -66,4 +68,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    }
+}

@@ -20,19 +20,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Entity(foreignKeys = {
+@Entity
+/*        (foreignKeys = {
         @ForeignKey(
                 entity = User.class,
                 parentColumns = "id",
                 childColumns = "userID",
                 onDelete = SET_NULL)
-})
+})*/
 
 public class Task {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
 
-    private Integer userID;
+    //private Integer userID;
     private String title;
     private String description;
 
@@ -176,11 +177,11 @@ public class Task {
         this.done = done;
     }
 
-    public Integer getUserId() {
+/*    public Integer getUserId() {
         return userID;
     }
 
     public void setUserID(Integer userID) {
         this.userID = userID;
-    }
+    }*/
 }

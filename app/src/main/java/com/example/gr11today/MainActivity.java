@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         String passwordStr = passwordIdEt.getText().toString();
 
 
-        if (Validate.validateInput(userStr) && Validate.validateInput(passwordStr)) {
+        if (!Validate.validateInput(userStr) && !Validate.validateInput(passwordStr)) {
             Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
             return;
         }
