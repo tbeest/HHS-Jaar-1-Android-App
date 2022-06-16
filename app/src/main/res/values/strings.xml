@@ -33,4 +33,5 @@
     <string name="addTaskTaskAdded">Added Task</string>
     <string name="addTaskTaskEdited">Task edited</string>
     <string name="addTaskTaskDelete">Task deleted</string>
+    <string name="tooltipTaskDelete">Delete task</string>
 </resources>
