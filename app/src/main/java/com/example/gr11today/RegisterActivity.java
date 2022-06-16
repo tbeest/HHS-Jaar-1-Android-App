@@ -39,8 +39,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (Validate.allFieldsEmpty(userStr, passwordStr, validatePasswordStr)) {
             Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
-            return;
+            if (Validate.checkLengthField(userStr) || (Validate.checkLengthField(passwordStr))) {
+                return;
+            }
         }
+
+
         if (!Validate.checkIfEqual(passwordStr, validatePasswordStr)) {
             Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
             return;

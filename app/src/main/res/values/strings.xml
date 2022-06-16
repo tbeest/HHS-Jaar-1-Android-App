@@ -38,4 +38,5 @@
     <string name="openTasksMarkedOpen">Marked To Do</string>
     <string name="accountDoesntExist">Account does not exist</string>
     <string name="accountAlreadyExists">Account does not exist</string>
+    <string name="fillInCorrectLength">Characters used to short</string>
 </resources>
