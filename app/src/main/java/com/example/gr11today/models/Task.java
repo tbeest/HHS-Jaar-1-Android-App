@@ -1,9 +1,12 @@
 package com.example.gr11today.models;
 
+import static androidx.room.ForeignKey.SET_NULL;
+
 import android.content.Context;
 import android.provider.ContactsContract;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
@@ -17,11 +20,19 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(foreignKeys = {
+        @ForeignKey(
+                entity = User.class,
+                parentColumns = "id",
+                childColumns = "userID",
+                onDelete = SET_NULL)
+})
+
 public class Task {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
 
+    private Integer userID;
     private String title;
     private String description;
 
@@ -163,5 +174,13 @@ public class Task {
 
     public void setDone(Boolean done) {
         this.done = done;
+    }
+
+    public Integer getUserId() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
     }
 }

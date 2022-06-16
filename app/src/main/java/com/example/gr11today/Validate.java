@@ -36,4 +36,16 @@ public class Validate {
         }
         return false;
     }
+
+    public static boolean inputValidString(String input) {
+        if (input == null || input.isEmpty()) {
+            return false;
+        }
+        for (char c : input.toCharArray()) {
+            if(!java.lang.Character.isAlphabetic(c) && c != ' ') {
+                return false;
+            }
+        }
+    return true;
+    }
 }
