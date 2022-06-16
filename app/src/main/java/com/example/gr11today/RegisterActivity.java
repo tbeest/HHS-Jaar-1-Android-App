@@ -39,16 +39,16 @@ public class RegisterActivity extends AppCompatActivity {
         String validatePasswordStr = validatePasswordIdEt.getText().toString();
 
         if (Validate.allFieldsEmpty(userStr, passwordStr, validatePasswordStr)) {
-            Toast.makeText(getApplicationContext(), "Field is empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
             return;
         }
         if (!Validate.checkIfEqual(passwordStr, validatePasswordStr)) {
-            Toast.makeText(getApplicationContext(), "Passwords do not match!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
             return;
         }
         User userInDb = Database.getDatabase(getApplicationContext()).userDao().getByUsername(userStr);
         if (userInDb != null) {
-            Toast.makeText(getApplicationContext(), "Username already exists!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.accountAlreadyExists, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         final UserDao userDao = database.userDao();
         new Thread(() -> {
             userDao.registerUser(user);
-            runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User registered!", Toast.LENGTH_SHORT).show());
+            Toast.makeText(this, R.string.fieldsFilledInCorrectly, Toast.LENGTH_SHORT).show();
         }).start();
     }
 }

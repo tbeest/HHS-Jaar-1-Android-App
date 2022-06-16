@@ -26,14 +26,16 @@
     <string name="errorAlreadyHere">Je bent hier al</string>
     <string name="errorTitleRequired">Error: een titel is verplicht</string>
     <string name="tooltipSignOut">Log uit</string>
-    <string name="passwordsNotMatch">Wachtwoorden zijn niet gelijk!</string>
-    <string name="passwordsDoMatch">Geregistreerd</string>
+    <string name="passwordsNotMatch">Wachtwoorden zijn niet gelijk</string>
     <string name="tooltipLabelButton">Labels beheren</string>
-    <string name="passwordEmpty">Vul een wachtwoord in</string>
     <string name="addTaskTaskAdded">Taak toegevoegd</string>
     <string name="addTaskTaskEdited">Taak bewerkt</string>
     <string name="addTaskTaskDelete">Taak verwijderd</string>
     <string name="tooltipTaskDelete">Taak verwijderen</string>
     <string name="openTasksMarkedDone">Gemarkeerd als gedaan</string>
     <string name="openTasksMarkedOpen">Gemarkeerd als To Do</string>
+    <string name="emptyField">Één of meer velden zijn leeg</string>
+    <string name="fieldsFilledInCorrectly">Geregistreerd</string>
+    <string name="accountDoesntExist">Account bestaat niet</string>
+    <string name="accountAlreadyExists">Account bestaat al</string>
 </resources>

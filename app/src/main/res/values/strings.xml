@@ -27,13 +27,15 @@
     <string name="errorTitleRequired">Error: a title is required</string>
     <string name="tooltipSignOut">Sign out</string>
     <string name="passwordsNotMatch">Passwords do not match!</string>
-    <string name="passwordsDoMatch">Registered</string>
+    <string name="fieldsFilledInCorrectly">User Registered</string>
     <string name="tooltipLabelButton">Manage labels</string>
-    <string name="passwordEmpty">Please fill in a password</string>
+    <string name="emptyField">One or more fields are empty</string>
     <string name="addTaskTaskAdded">Added Task</string>
     <string name="addTaskTaskEdited">Task edited</string>
     <string name="addTaskTaskDelete">Task deleted</string>
     <string name="tooltipTaskDelete">Delete task</string>
     <string name="openTasksMarkedDone">Marked done</string>
     <string name="openTasksMarkedOpen">Marked To Do</string>
+    <string name="accountDoesntExist">Account does not exist</string>
+    <string name="accountAlreadyExists">Account does not exist</string>
 </resources>

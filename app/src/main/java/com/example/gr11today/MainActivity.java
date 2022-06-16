@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (Validate.validateInput(userStr) && Validate.validateInput(passwordStr)) {
-            Toast.makeText(getApplicationContext(), "Field is empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
             return;
         }
 
         User userInDb = Database.getDatabase(getApplicationContext()).userDao().getByUsername(userStr);
         if (userInDb == null) {
-            Toast.makeText(getApplicationContext(), "Username doesn't exists!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.accountDoesntExist, Toast.LENGTH_SHORT).show();
             return;
         }
 
