@@ -13,7 +13,6 @@ Known bugs/issues:
 
 To do:
 - Unit tests
-- Bewerkte taken op kunnen slaan.
 - Taken kunnen verwijderen.
 - Gebruikers koppelen aan taken.
 
