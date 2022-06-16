@@ -7,9 +7,7 @@ Tarik el Idrissi?
 
 Known bugs/issues:
 - Momenteel ververst de recyclerview niet, na het opslaan van een task. Bij het wisselen tussen open en closed komt het wel weer naar voren.
-- V5 wireframes zijn niet 100% up-to-date.
--- Settings tandwiel is vervangen voor een log-uit knop.
--- Label icoon rechtsonder is niet overal aanwezig.
+- V5.1 wireframes are roughly up-to-date
 
 
 To do:
