@@ -90,15 +90,17 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         if (title == null || title.isEmpty()) {
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
         } else {
-            if (dateB.getText().toString().isEmpty()) {
+            if (!dateB.getText().toString().isEmpty()) {
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 Date date = df.parse(strDate);
 
                 System.out.println(date);
 
+                System.out.println("Adding date");
                 Task task = new Task(title, description, date, status);
                 saveTask(task, editTask);
             } else {
+                System.out.println("Not adding date");
                 Task task = new Task(title, description, status);
                 saveTask(task, editTask);
             }
