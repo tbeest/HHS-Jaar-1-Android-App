@@ -1,7 +1,5 @@
 package com.example.gr11today;
 
-import com.example.gr11today.models.User;
-
 public class Validate {
 
     public static Boolean validateInput(String input) {

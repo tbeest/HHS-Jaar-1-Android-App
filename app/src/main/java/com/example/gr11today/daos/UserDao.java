@@ -8,12 +8,8 @@ import androidx.room.Update;
 
 import com.example.gr11today.models.User;
 
-import java.util.List;
-
 @Dao
 public interface UserDao {
-//    @Query("SELECT * FROM users")
-//    List<users> getAll();
 
     @Query("SELECT * FROM user WHERE id = :id")
     User getById(int id);

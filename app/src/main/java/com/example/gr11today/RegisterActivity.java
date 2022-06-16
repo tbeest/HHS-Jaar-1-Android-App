@@ -27,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
         loginScreenId = findViewById(R.id.loginScreenId);
 
         loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
-
     }
 
     public void register(View view) {

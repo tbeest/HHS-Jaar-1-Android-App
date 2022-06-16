@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     TextView registerAccount;
     Button signInId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
