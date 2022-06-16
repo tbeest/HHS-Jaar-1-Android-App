@@ -11,9 +11,9 @@ Known bugs/issues:
 -- Settings tandwiel is vervangen voor een log-uit knop.
 -- Label icoon rechtsonder is niet overal aanwezig.
 
+
 To do:
 - Unit tests
-- Taken kunnen verwijderen.
 - Gebruikers koppelen aan taken.
 
 - Alles betreft labels. We zijn bang dat die er niet meer gaan komen.
