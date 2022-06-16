@@ -23,14 +23,14 @@ public class Validate {
         return false;
     }
 
-    public static Boolean checkLengthField(String input) {
-        if (input.length() >= 5) {
+    public static Boolean checkRegistrationLengthField(String input1, String input2, String input3) {
+        if (input1.length() <= 5 || input2.length() <= 5 || input3.length() <= 5) {
             return true;
         }
         return false;
     }
 
-    public static Boolean fieldNotNull(String input) {
+    public static Boolean checkFieldNotNull(String input) {
         if (input != null) {
             return true;
         }
