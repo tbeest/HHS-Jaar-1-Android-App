@@ -121,6 +121,15 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         }
     }
 
+    public void deleteTask(View view) {
+        if (taskId > 0) {
+            Task task = Database.getDatabase(getApplicationContext()).taskDao().getById(taskId);
+            Task.deleteTask(task, this);
+        }
+        Toast.makeText(this, R.string.addTaskTaskDelete, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
     public void setStatus(View view) {
         CheckBox taskCB = findViewById(R.id.task_checkBox);
         boolean status = taskCB.isChecked();

@@ -61,6 +61,12 @@ public class Task {
         }
     }
 
+    public static void deleteTask(Task task, Context context) {
+        if (task.getId() > 0) {
+            Database.getDatabase(context).taskDao().delete(task);
+        }
+    }
+
     public static List<Task> getAll(Context context) {
         return Database.getDatabase(context).taskDao().getAll();
     }
