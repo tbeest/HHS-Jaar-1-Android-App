@@ -24,4 +24,18 @@ public class Validate {
         }
         return false;
     }
+
+    public static Boolean checkLengthField(String input) {
+        if (input.length() >= 5) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean fieldNotNull(String input) {
+        if (input != null) {
+            return true;
+        }
+        return false;
+    }
 }
