@@ -96,14 +96,7 @@ public class Task {
     }
 
     @Ignore
-    public Task(String title, Date date, boolean done) {
-        this.title = title;
-        this.date = date;
-        this.done = done;
-    }
-
-    @Ignore
-    public Task(String title, String description, Date date, boolean done) {
+    public Task(String title, String description, boolean done, Date date) {
         this.title = title;
         this.description = description;
         this.date = date;

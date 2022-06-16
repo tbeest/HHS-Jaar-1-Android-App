@@ -91,13 +91,15 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
         } else {
             if (!dateB.getText().toString().isEmpty()) {
-                DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                Date date = df.parse(strDate);
+                String dateString = dateB.getText().toString();
+                System.out.println("DateB: " + dateString);
+                DateFormat df = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
+                Date date = df.parse(dateString);
 
                 System.out.println(date);
 
                 System.out.println("Adding date");
-                Task task = new Task(title, description, date, status);
+                Task task = new Task(title, description, status, date);
                 saveTask(task, editTask);
             } else {
                 System.out.println("Not adding date");
@@ -160,7 +162,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         myHour = hourOfDay;
         myMinute = minute;
-        strDate = String.format("%02d/%02d/%04d %02d:%02d", myDay, myMonth, myYear, myHour, myMinute);
+        strDate = String.format("%02d-%02d-%04d  %02d:%02d", myDay, myMonth, myYear, myHour, myMinute);
         dateB.setText(strDate);
     }
 }
