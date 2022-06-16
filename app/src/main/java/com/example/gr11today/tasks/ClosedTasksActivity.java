@@ -44,20 +44,21 @@ public class ClosedTasksActivity extends AppCompatActivity {
 
         titleId.setText(R.string.toDoTitleDone);
 
-        tasks = Task.getAllOpen(this);
-
+        tasks = Task.getAllClosed(this);
 
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
+                        tasks.clear();
+                        tasks.addAll(Task.getAllClosed(getApplicationContext()));
                         recyclerView.getAdapter().notifyDataSetChanged();
                     }
                 });
 
         recyclerView = findViewById(R.id.tasks_list);
-        TaskRowAdapter adapter = new TaskRowAdapter(Task.getAllClosed(this));
+        TaskRowAdapter adapter = new TaskRowAdapter(tasks);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -70,7 +71,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
         Integer taskId = (Integer) view.getTag();
         String taskIdStr = taskId + "";
 
-        System.out.println("Passed task ID int:" + taskId + "Passed task ID str: " + taskIdStr);
+        System.out.println("Passed task ID str: " + taskIdStr);
 
         intent.putExtra("ID", taskIdStr);
 
@@ -94,7 +95,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
         Task.updateTask(task, this);
 
         tasks.clear();
-        tasks.addAll(Task.getAllOpen(getApplicationContext()));
+        tasks.addAll(Task.getAllClosed(getApplicationContext()));
         recyclerView.getAdapter().notifyDataSetChanged();
     }
 

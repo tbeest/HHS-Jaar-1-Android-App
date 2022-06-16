@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +33,6 @@ public class OpenTasksActivity extends AppCompatActivity {
 
     Button openTasksButtonId, closedTasksButtonId;
     TextView titleId;
-    LinearLayout rowId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,6 @@ public class OpenTasksActivity extends AppCompatActivity {
 
         tasks = Task.getAllOpen(this);
 
-
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -59,15 +56,6 @@ public class OpenTasksActivity extends AppCompatActivity {
             }
         });
 
-/*        LinearLayout rowId2 = findViewById(R.id.task_row_layout_id);
-        if (rowId2 != null) {
-            String taskIdStr = rowId2.getTag().toString();
-            Integer taskId = Integer.parseInt(taskIdStr);
-            System.out.println("OnCreate task ID:" + taskId);
-        } else {
-            System.out.println("OnCreate = null");
-        }*/
-
         recyclerView = findViewById(R.id.tasks_list);
         TaskRowAdapter adapter = new TaskRowAdapter(tasks);
         recyclerView.setAdapter(adapter);
@@ -75,7 +63,6 @@ public class OpenTasksActivity extends AppCompatActivity {
 
         closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(OpenTasksActivity.this, ClosedTasksActivity.class)));
     }
-
 
     public void gotoEditTask(View view) {
         Intent intent = new Intent(OpenTasksActivity.this, AddTaskActivity.class);

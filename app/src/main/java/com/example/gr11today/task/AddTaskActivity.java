@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gr11today.Database;
 import com.example.gr11today.R;
+import com.example.gr11today.TaskValidator;
 import com.example.gr11today.models.Task;
 
 import java.text.DateFormat;
@@ -26,14 +27,16 @@ import java.util.Date;
 
 
 public class AddTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    Button dateB;
     int day, month, year, hour, minute;
     int myDay, myMonth, myYear, myHour, myMinute;
-    String taskIdStr, strDate;
+    String strDate;
     int taskId;
-    Boolean editTask = false;
+    boolean editTask = false;
+
     EditText titleET, descriptionET;
     CheckBox taskCB;
+    TaskValidator tv = new TaskValidator();
+    Button dateB;
 
 
     @Override
@@ -47,7 +50,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         String taskIdStr = intent.getStringExtra("ID");
         System.out.println("taskIdStr: " + taskIdStr);
 
-        if (taskIdStr != null) {
+        if (tv.stringNotEmpty(taskIdStr)) {
             titleET = findViewById(R.id.task_title);
             descriptionET = findViewById(R.id.task_description);
             taskCB = findViewById(R.id.task_checkBox);
@@ -87,10 +90,10 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         String description = descriptionET.getText().toString();
         boolean status = taskCB.isChecked();
 
-        if (title == null || title.isEmpty()) {
+        if (!tv.stringNotEmpty(title)) {
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
         } else {
-            if (!dateB.getText().toString().isEmpty()) {
+            if (tv.stringNotEmpty(dateB.getText().toString())) {
                 String dateString = dateB.getText().toString();
                 System.out.println("DateB: " + dateString);
                 DateFormat df = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
@@ -107,7 +110,6 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
                 saveTask(task, editTask);
             }
             finish();
-//            startActivity(new Intent(AddTaskActivity.this, ToDoTasks.class));
         }
     }
 
@@ -130,14 +132,6 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         }
         Toast.makeText(this, R.string.addTaskTaskDelete, Toast.LENGTH_SHORT).show();
         finish();
-    }
-
-    public void setStatus(View view) {
-        CheckBox taskCB = findViewById(R.id.task_checkBox);
-        boolean status = taskCB.isChecked();
-
-
-        System.out.println(status);
     }
 
     public void cancel(View view) {
