@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr11today.Database;
 import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
@@ -90,16 +91,20 @@ public class OpenTasksActivity extends AppCompatActivity {
     }
 
     public void setStatus(View view) {
-        CheckBox taskCB = findViewById(R.id.task_checkBox);
+        CheckBox taskCB = view.findViewById(R.id.task_checkBox);
         Integer taskId = (Integer) view.getTag();
         System.out.println("taskId checkbox: " + taskId);
+        Task task = Database.getDatabase(getApplicationContext()).taskDao().getById(taskId);
+        Boolean done = taskCB.isChecked();
+        task.setDone(done);
 
+        if (done) {
+            Toast.makeText(this, R.string.openTasksMarkedDone, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, R.string.openTasksMarkedOpen, Toast.LENGTH_SHORT).show();
+        }
 
-        boolean status = taskCB.isChecked();
-
-        System.out.println(status);
-
-
+        Task.updateTask(task, this);
     }
 
     public void alreadyOpen(View view) {

@@ -40,6 +40,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         holder.taskDate.setText(date);
         holder.taskDone.setChecked(task.getDone());
         holder.row.setTag(task.getId());
+        holder.taskDone.setTag(task.getId());
 
 
         System.out.println("Task ID of row:" + task.getId());

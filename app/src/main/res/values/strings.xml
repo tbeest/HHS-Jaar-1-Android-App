@@ -34,4 +34,6 @@
     <string name="addTaskTaskEdited">Task edited</string>
     <string name="addTaskTaskDelete">Task deleted</string>
     <string name="tooltipTaskDelete">Delete task</string>
+    <string name="openTasksMarkedDone">Marked done</string>
+    <string name="openTasksMarkedOpen">Marked To Do</string>
 </resources>

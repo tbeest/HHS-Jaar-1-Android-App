@@ -8,7 +8,7 @@ Tarik el Idrissi?
 Known bugs/issues:
 - Momenteel ververst de recyclerview niet, na het opslaan van een task. Bij het wisselen tussen open en closed komt het wel weer naar voren.
 - V5.1 wireframes are roughly up-to-date.
-- Checkbox in activity_tasks.list.xml werkt niet.
+- Recyclerview ververst niet na aanpassen checkbox.
 
 
 To do:

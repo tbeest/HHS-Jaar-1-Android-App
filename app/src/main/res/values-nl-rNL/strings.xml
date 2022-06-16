@@ -34,4 +34,6 @@
     <string name="addTaskTaskEdited">Taak bewerkt</string>
     <string name="addTaskTaskDelete">Taak verwijderd</string>
     <string name="tooltipTaskDelete">Taak verwijderen</string>
+    <string name="openTasksMarkedDone">Gemarkeerd als gedaan</string>
+    <string name="openTasksMarkedOpen">Gemarkeerd als To Do</string>
 </resources>
