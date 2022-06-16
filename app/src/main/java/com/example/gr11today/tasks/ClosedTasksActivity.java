@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gr11today.Database;
 import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
@@ -71,11 +72,20 @@ public class ClosedTasksActivity extends AppCompatActivity {
     }
 
     public void setStatus(View view) {
-        CheckBox taskCB = findViewById(R.id.task_checkBox);
-        boolean status = taskCB.isChecked();
+        CheckBox taskCB = view.findViewById(R.id.task_checkBox);
+        Integer taskId = (Integer) view.getTag();
+        System.out.println("taskId checkbox: " + taskId);
+        Task task = Database.getDatabase(getApplicationContext()).taskDao().getById(taskId);
+        Boolean done = taskCB.isChecked();
+        task.setDone(done);
 
+        if (done) {
+            Toast.makeText(this, R.string.openTasksMarkedDone, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, R.string.openTasksMarkedOpen, Toast.LENGTH_SHORT).show();
+        }
 
-        System.out.println(status);
+        Task.updateTask(task, this);
     }
 
     public void alreadyOpen(View view) {
