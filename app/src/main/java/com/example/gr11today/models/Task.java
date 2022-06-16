@@ -1,6 +1,7 @@
 package com.example.gr11today.models;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -54,8 +55,10 @@ public class Task {
         }
     }
 
-    public static void updateTask(Task task, Context contact) {
-
+    public static void updateTask(Task task, Context context) {
+        if (task != null) {
+            Database.getDatabase(context).taskDao().update(task);
+        }
     }
 
     public static List<Task> getAll(Context context) {

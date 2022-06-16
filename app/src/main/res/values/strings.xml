@@ -15,7 +15,7 @@
     <string name="closedTasksButton">Closed Tasks</string>
     <string name="toDoTitleToDo">To Do</string>
     <string name="toDoTitleDone">Done</string>
-    <string name="ToDoTitleTask">Task</string>
+    <string name="toDoTitleTask">Task</string>
     <string name="taskEdit">Edit</string>
     <string name="taskClose">Close</string>
     <string name="taskSave">Save</string>
@@ -25,10 +25,11 @@
     <string name="taskDateHint">Add date and time</string>
     <string name="errorAlreadyHere">You\'re already here</string>
     <string name="errorTitleRequired">Error: a title is required</string>
-    <string name="TooltipSignOut">Sign out</string>
+    <string name="tooltipSignOut">Sign out</string>
     <string name="passwordsNotMatch">Passwords do not match!</string>
     <string name="passwordsDoMatch">Registered</string>
     <string name="tooltipLabelButton">Manage labels</string>
     <string name="passwordEmpty">Please fill in a password</string>
-    <string name="AddTaskTaskAdded">Added Task</string>
+    <string name="addTaskTaskAdded">Added Task</string>
+    <string name="addTaskTaskEdited">Task edited</string>
 </resources>

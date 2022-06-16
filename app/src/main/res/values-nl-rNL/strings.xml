@@ -14,7 +14,7 @@
     <string name="closedTasksButton">Gesloten Taken</string>
     <string name="toDoTitleToDo">Te Doen</string>
     <string name="toDoTitleDone">Gedaan</string>
-    <string name="ToDoTitleTask">Taak</string>
+    <string name="toDoTitleTask">Taak</string>
     <string name="taskEdit">Bewerken</string>
     <string name="taskClose">Sluiten</string>
     <string name="taskSave">Opslaan</string>
@@ -25,10 +25,11 @@
     <string name="taskDateHint">Voeg datum en titel toe</string>
     <string name="errorAlreadyHere">Je bent hier al</string>
     <string name="errorTitleRequired">Error: een titel is verplicht</string>
-    <string name="TooltipSignOut">Log uit</string>
+    <string name="tooltipSignOut">Log uit</string>
     <string name="passwordsNotMatch">Wachtwoorden zijn niet gelijk!</string>
     <string name="passwordsDoMatch">Geregistreerd</string>
     <string name="tooltipLabelButton">Labels beheren</string>
     <string name="passwordEmpty">Vul een wachtwoord in</string>
-    <string name="AddTaskTaskAdded">Taak toegevoegd</string>
+    <string name="addTaskTaskAdded">Taak toegevoegd</string>
+    <string name="addTaskTaskEdited">Taak bewerkt</string>
 </resources>

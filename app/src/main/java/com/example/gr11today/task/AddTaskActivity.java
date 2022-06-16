@@ -2,7 +2,6 @@ package com.example.gr11today.task;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +31,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     int myDay, myMonth, myYear, myHour, myMinute;
     String taskIdStr, strDate;
     int taskId;
+    Boolean editTask = false;
     EditText titleET, descriptionET;
     CheckBox taskCB;
 
@@ -61,6 +61,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
             descriptionET.setText(task.getDescription());
             dateB.setText(task.getDateString());
             taskCB.setChecked(task.getDone());
+            editTask = true;
         }
 
         dateB = findViewById(R.id.task_date);
@@ -89,27 +90,32 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         if (title == null || title.isEmpty()) {
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
         } else {
-            Date date = null;
-            if (myYear > 0) {
+            if (dateB.getText().toString().isEmpty()) {
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                date = df.parse(strDate);
+                Date date = df.parse(strDate);
 
                 System.out.println(date);
 
                 Task task = new Task(title, description, date, status);
-                task.addTask(task, this);
+                saveTask(task, editTask);
             } else {
                 Task task = new Task(title, description, status);
-                task.addTask(task, this);
+                saveTask(task, editTask);
             }
-
-
-            System.out.println(description);
-            System.out.println(title);
-
-            Toast.makeText(this, R.string.AddTaskTaskAdded, Toast.LENGTH_SHORT).show();
             finish();
 //            startActivity(new Intent(AddTaskActivity.this, ToDoTasks.class));
+        }
+    }
+
+    public void saveTask(Task task, boolean editTask) {
+        if (editTask) {
+            task.setId(taskId);
+            Task.updateTask(task, this);
+            Toast.makeText(this, R.string.addTaskTaskEdited, Toast.LENGTH_SHORT).show();
+
+        } else {
+            Task.addTask(task, this);
+            Toast.makeText(this, R.string.addTaskTaskAdded, Toast.LENGTH_SHORT).show();
         }
     }
 
