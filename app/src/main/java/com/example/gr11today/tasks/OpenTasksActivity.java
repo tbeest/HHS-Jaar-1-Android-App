@@ -82,7 +82,7 @@ public class OpenTasksActivity extends AppCompatActivity {
         Integer taskId = (Integer) view.getTag();
         String taskIdStr = taskId + "";
 
-        System.out.println("Passed task ID int:" + taskId + "Passed task ID str: " + taskIdStr);
+        System.out.println("Passed task ID str: " + taskIdStr);
 
         intent.putExtra("ID", taskIdStr);
 
@@ -91,10 +91,15 @@ public class OpenTasksActivity extends AppCompatActivity {
 
     public void setStatus(View view) {
         CheckBox taskCB = findViewById(R.id.task_checkBox);
+        Integer taskId = (Integer) view.getTag();
+        System.out.println("taskId checkbox: " + taskId);
+
+
         boolean status = taskCB.isChecked();
 
-
         System.out.println(status);
+
+
     }
 
     public void alreadyOpen(View view) {
