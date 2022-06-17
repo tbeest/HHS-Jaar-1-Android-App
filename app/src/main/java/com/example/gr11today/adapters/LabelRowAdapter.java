@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gr11today.R;
 import com.example.gr11today.models.Label;
+import com.example.gr11today.models.User;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHo
 
     public LabelRowAdapter(List<Label> data, boolean hideDelete) {
         if (hideDelete) {
-            data.add(new Label("<Remove filter>", 0));
+            data.add(new Label("<Remove filter>", null, User.getActiveUser().getUserId()));
         }
         this.data = data;
         this.hideDelete = hideDelete;

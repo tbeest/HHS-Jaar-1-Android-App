@@ -13,6 +13,7 @@ import com.example.gr11today.Database;
 import com.example.gr11today.R;
 import com.example.gr11today.TaskValidator;
 import com.example.gr11today.models.Label;
+import com.example.gr11today.models.User;
 
 public class AddLabelActivity extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class AddLabelActivity extends AppCompatActivity {
 
             labelId = Integer.parseInt(labelIdStr);
 
-            Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId);
+            Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId, User.getActiveUser().getUserId());
 
             nameET.setText(label.getName());
             editLabel = true;
@@ -57,7 +58,7 @@ public class AddLabelActivity extends AppCompatActivity {
         if (!tv.stringNotEmpty(name)) {
             Toast.makeText(this, R.string.errorLabelNameRequired, Toast.LENGTH_SHORT).show();
         } else {
-            Label label = new Label(name);
+            Label label = new Label(name, User.getActiveUser().getUserId());
             saveLabel(label, editLabel);
         }
     }
@@ -77,7 +78,7 @@ public class AddLabelActivity extends AppCompatActivity {
 
     public void deleteLabel(View view) {
         if (labelId > 0) {
-            Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId);
+            Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId, User.getActiveUser().getUserId());
             Label.deleteLabel(label, this);
         }
         Toast.makeText(this, R.string.addLabelLabelDelete, Toast.LENGTH_SHORT).show();

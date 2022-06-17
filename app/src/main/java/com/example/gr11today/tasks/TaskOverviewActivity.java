@@ -63,7 +63,6 @@ public class TaskOverviewActivity extends AppCompatActivity {
                         labelId = results.getInt("LABELID");
                     }
                 }
-                System.out.println("Label: " + labelId);
 
                 tasks.clear();
                 tasks.addAll(Task.getAll(getApplicationContext(), done, labelId));

@@ -12,7 +12,6 @@ import androidx.room.TypeConverters;
 
 import com.example.gr11today.Converters;
 import com.example.gr11today.Database;
-import com.example.gr11today.TaskValidator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -98,7 +97,7 @@ public class Task {
 
         for (Task task : tasks) {
             if (task.labelId != null) {
-                task.label = Database.getDatabase(context).labelDao().getById(task.labelId);
+                task.label = Database.getDatabase(context).labelDao().getById(task.labelId, User.getActiveUser().getUserId());
             }
         }
         return tasks;
@@ -212,12 +211,5 @@ public class Task {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

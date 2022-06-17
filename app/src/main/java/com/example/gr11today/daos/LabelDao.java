@@ -12,11 +12,11 @@ import java.util.List;
 
 @Dao
 public interface LabelDao {
-    @Query("SELECT * FROM label")
-    List<Label> getAll();
+    @Query("SELECT * FROM label WHERE userId = :userId")
+    List<Label> getAll(int userId);
 
-    @Query("SELECT * FROM label WHERE labelId = :id")
-    Label getById(int id);
+    @Query("SELECT * FROM label WHERE labelId = :labelId AND userId = :userId")
+    Label getById(int labelId, int userId);
 
     @Insert
     void insert(Label label);

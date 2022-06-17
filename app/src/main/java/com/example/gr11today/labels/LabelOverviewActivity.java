@@ -21,6 +21,7 @@ import com.example.gr11today.R;
 import com.example.gr11today.adapters.LabelRowAdapter;
 import com.example.gr11today.models.Label;
 //import com.example.gr11today.tasks.ClosedTasksActivity;
+import com.example.gr11today.models.User;
 import com.example.gr11today.tasks.TaskOverviewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -99,7 +100,7 @@ public class LabelOverviewActivity extends AppCompatActivity {
     public void deleteLabel(View view) {
         Integer labelId = (Integer) view.getTag();
 
-        Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId);
+        Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId, User.getActiveUser().getUserId());
 
         Label.deleteLabel(label, this);
         Toast.makeText(this, R.string.addLabelLabelDelete, Toast.LENGTH_SHORT).show();
