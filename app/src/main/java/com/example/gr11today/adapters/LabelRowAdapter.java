@@ -18,9 +18,11 @@ import java.util.List;
 
 public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHolder> {
     private List<Label> data;
+    boolean hideDelete;
 
-    public LabelRowAdapter(List<Label> data) {
+    public LabelRowAdapter(List<Label> data, boolean hideDelete) {
         this.data = data;
+        this.hideDelete = hideDelete;
     }
 
     @NonNull
@@ -40,7 +42,11 @@ public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHo
         holder.labelName.setText(label.getName());
         holder.row.setTag(label.getLabelId());
 
-        holder.deleteLabel.setTag(label.getLabelId());
+        if (hideDelete) {
+            holder.deleteLabel.setVisibility(View.GONE);
+        } else {
+            holder.deleteLabel.setTag(label.getLabelId());
+        }
     }
 
     @Override
@@ -58,9 +64,7 @@ public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHo
             super(itemView);
             labelName = itemView.findViewById(R.id.label_name);
             deleteLabel = itemView.findViewById(R.id.label_delete_button);
-            System.out.println("Assigning row_layout");
             row = itemView.findViewById(R.id.label_row_layout_id);
-            System.out.println("row_layout assigned");
 
         }
     }

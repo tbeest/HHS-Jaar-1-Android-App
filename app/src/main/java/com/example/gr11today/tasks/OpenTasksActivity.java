@@ -21,7 +21,9 @@ import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.labels.LabelOverviewActivity;
+import com.example.gr11today.labels.SelectLabelActivity;
 import com.example.gr11today.models.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class OpenTasksActivity extends AppCompatActivity {
 
     Button openTasksButtonId, closedTasksButtonId, labelButtonId;
     TextView titleId;
+    FloatingActionButton filterButtonId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class OpenTasksActivity extends AppCompatActivity {
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
         labelButtonId = findViewById(R.id.labelButton);
         titleId = findViewById(R.id.taskTitleId);
+        filterButtonId = findViewById(R.id.filterTasksButton);
 
         titleId.setText(R.string.toDoTitleToDo);
 
@@ -64,10 +68,17 @@ public class OpenTasksActivity extends AppCompatActivity {
 
         closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, ClosedTasksActivity.class)));
         labelButtonId.setOnClickListener(v -> startActivity(new Intent(this, LabelOverviewActivity.class)));
+        filterButtonId.setOnClickListener(v -> selectFilter(v));
     }
 
     @Override
     public void onBackPressed() {
+    }
+
+    public void selectFilter(View view) {
+        Intent intent = new Intent(this, SelectLabelActivity.class);
+
+        launcher.launch(intent);
     }
 
     public void gotoEditTask(View view) {

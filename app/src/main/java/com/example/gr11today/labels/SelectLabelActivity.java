@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -15,44 +15,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gr11today.Database;
-import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
+import com.example.gr11today.TaskValidator;
 import com.example.gr11today.adapters.LabelRowAdapter;
 import com.example.gr11today.models.Label;
-import com.example.gr11today.tasks.ClosedTasksActivity;
-import com.example.gr11today.tasks.OpenTasksActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class LabelOverviewActivity extends AppCompatActivity {
+public class SelectLabelActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
     private List<Label> labels;
 
+    TaskValidator tv = new TaskValidator();
+
     Button openTasksButtonId, closedTasksButtonId, labelButtonId, deleteButtonId;
+    LinearLayout bottomNavId;
     TextView titleId, nameId;
-    FloatingActionButton addLabelButtonId, filterItemButton;
+    FloatingActionButton addLabelButtonId, filterItemButtonId, signOutButtonId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks_list);
-        openTasksButtonId = findViewById(R.id.openTasksButton);
-        closedTasksButtonId = findViewById(R.id.closedTasksButton);
-        labelButtonId = findViewById(R.id.labelButton);
+        bottomNavId = findViewById(R.id.linearLayoutBottomNav);
+        bottomNavId.setVisibility(View.GONE);
+
+//        deleteButtonId.setTooltipText("Lol");
         addLabelButtonId = findViewById(R.id.addTaskButton);
-        filterItemButton = findViewById((R.id.filterTasksButton));
-        filterItemButton.setVisibility(View.GONE);
+        addLabelButtonId.setVisibility(View.GONE);
+        filterItemButtonId = findViewById((R.id.filterTasksButton));
+        filterItemButtonId.setVisibility(View.GONE);
+        signOutButtonId = findViewById(R.id.signOutButton);
+        signOutButtonId.setVisibility(View.GONE);
+
         titleId = findViewById(R.id.taskTitleId);
-
-        addLabelButtonId.setTooltipText("Add new label");
-        addLabelButtonId.setContentDescription("Add new label");
-//        addLabelButtonId.setTooltipText(R.string.toDoTitleLabel);
-//        addLabelButtonId.setContentDescription(R.string.toDoTitleLabel);
-
         titleId.setText(R.string.toDoTitleLabel);
 
         labels = Label.getAll(this);
@@ -68,13 +67,15 @@ public class LabelOverviewActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.tasks_list);
-        LabelRowAdapter adapter = new LabelRowAdapter(labels, false);
+        LabelRowAdapter adapter = new LabelRowAdapter(labels, true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, ClosedTasksActivity.class)));
-        openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, OpenTasksActivity.class)));
-        addLabelButtonId.setOnClickListener(v -> launcher.launch(new Intent(this, AddLabelActivity.class)));
+        deleteButtonId = findViewById(R.id.label_delete_button);
+        System.out.println(deleteButtonId);
+        if (deleteButtonId != null) {
+            deleteButtonId.setVisibility(View.GONE);
+        }
     }
 
     public void gotoEditLabel(View view) {
@@ -86,22 +87,5 @@ public class LabelOverviewActivity extends AppCompatActivity {
         intent.putExtra("ID", labelIdStr);
 
         launcher.launch(intent);
-    }
-
-    public void deleteLabel(View view) {
-        Integer labelId = (Integer) view.getTag();
-
-        Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId);
-
-        Label.deleteLabel(label, this);
-        Toast.makeText(this, R.string.addLabelLabelDelete, Toast.LENGTH_SHORT).show();
-
-        labels.clear();
-        labels.addAll(Label.getAll(getApplicationContext()));
-        recyclerView.getAdapter().notifyDataSetChanged();
-    }
-
-    public void signOut(View view) {
-        startActivity(new Intent(this, MainActivity.class));
     }
 }

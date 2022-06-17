@@ -32,6 +32,9 @@
             android:name=".labels.AddLabelActivity"
             android:exported="false" />
         <activity
+            android:name=".labels.SelectLabelActivity"
+            android:exported="false" />
+        <activity
             android:name=".tasks.OpenTasksActivity"
             android:exported="true">
             <intent-filter>
