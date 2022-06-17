@@ -10,7 +10,7 @@ public class LoginValidator {
     }
 
     public static boolean checkIfEqual(String password, String validatePassword) {
-        if (password.equals(validatePassword) && !password.isEmpty() && !validatePassword.isEmpty() && password != null && validatePassword != null) {
+        if (password.equals(validatePassword)) {
             return true;
         }
         return false;

@@ -78,52 +78,7 @@ public class Logintest {
         boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
-        boolean expected = true;
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void checkIfPasswordsOneIsNull() {
-        //ARRANGE
-        LoginValidator loginValidator = new LoginValidator();
-        String TestPassword1 = "correct";
-        String TestPassword2 = null;
-
-        //ACT
-        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
-
-        //ASSERT
-        boolean expected = true;
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void checkIfPasswordsOneIsEmpty() {
-        //ARRANGE
-        LoginValidator loginValidator = new LoginValidator();
-        String TestPassword1 = "correct";
-        String TestPassword2 = "";
-
-        //ACT
-        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
-
-        //ASSERT
-        boolean expected = true;
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void checkIfPasswordsBothAreEmpty() {
-        //ARRANGE
-        LoginValidator loginValidator = new LoginValidator();
-        String TestPassword1 = "";
-        String TestPassword2 = "";
-
-        //ACT
-        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
-
-        //ASSERT
-        boolean expected = true;
+        boolean expected = false;
         assertEquals(expected, result);
     }
 
