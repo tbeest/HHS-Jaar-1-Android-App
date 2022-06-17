@@ -26,8 +26,8 @@ public class Label {
     }
 
     @Ignore
-    public Label(String context, Integer labelId) {
-        this.name = context;
+    public Label(String name, Integer labelId) {
+        this.name = name;
         this.labelId = labelId;
     }
 

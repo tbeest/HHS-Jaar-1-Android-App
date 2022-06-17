@@ -21,6 +21,9 @@ public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHo
     boolean hideDelete;
 
     public LabelRowAdapter(List<Label> data, boolean hideDelete) {
+        if (hideDelete) {
+            data.add(new Label("<Remove filter>", 0));
+        }
         this.data = data;
         this.hideDelete = hideDelete;
     }

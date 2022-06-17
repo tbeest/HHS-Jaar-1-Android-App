@@ -133,10 +133,10 @@ public class TaskOverviewActivity extends AppCompatActivity {
         Integer taskId = (Integer) view.getTag();
         System.out.println("taskId checkbox: " + taskId);
         Task task = Database.getDatabase(getApplicationContext()).taskDao().getById(taskId);
-        Boolean done = taskCB.isChecked();
-        task.setDone(done);
+        boolean setDone = taskCB.isChecked();
+        task.setDone(setDone);
 
-        if (done) {
+        if (setDone) {
             Toast.makeText(this, R.string.openTasksMarkedDone, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, R.string.openTasksMarkedOpen, Toast.LENGTH_SHORT).show();
