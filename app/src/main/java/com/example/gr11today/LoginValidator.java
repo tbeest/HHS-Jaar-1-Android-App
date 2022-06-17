@@ -1,6 +1,6 @@
 package com.example.gr11today;
 
-public class Validate {
+public class LoginValidator {
 
     public static boolean validateInputStringNotNullNotEmpty(String inputString) {
         if (inputString == null || inputString.isEmpty()) {
@@ -10,10 +10,10 @@ public class Validate {
     }
 
     public static boolean checkIfEqual(String password, String validatePassword) {
-        if (password.equals(validatePassword) && password.isEmpty() && validatePassword.isEmpty() && password == null && validatePassword == null) {
-            return false;
+        if (password.equals(validatePassword) && !password.isEmpty() && !validatePassword.isEmpty() && password != null && validatePassword != null) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static boolean checkRegistrationLengthField(String String) {

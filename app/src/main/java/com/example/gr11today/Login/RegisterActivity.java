@@ -12,8 +12,7 @@ import android.widget.Toast;
 
 import com.example.gr11today.Database;
 import com.example.gr11today.R;
-import com.example.gr11today.Validate;
-import com.example.gr11today.daos.UserDao;
+import com.example.gr11today.LoginValidator;
 import com.example.gr11today.models.User;
 import com.example.gr11today.tasks.TaskOverviewActivity;
 
@@ -45,29 +44,29 @@ public class RegisterActivity extends AppCompatActivity {
         validatePasswordIdEt = findViewById(R.id.validatePasswordId);
         String validatePasswordStr = validatePasswordIdEt.getText().toString();
 
-        if (!Validate.validateInputStringNotNullNotEmpty(userStr)) {
+        if (!LoginValidator.validateInputStringNotNullNotEmpty(userStr)) {
             Toast.makeText(this, R.string.emptyUsernameField, Toast.LENGTH_SHORT).show();
             return;
-        } else if (!Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
+        } else if (!LoginValidator.validateInputStringNotNullNotEmpty(passwordStr)) {
             Toast.makeText(this, R.string.emptyPasswordField, Toast.LENGTH_SHORT).show();
             return;
-        } else if (!Validate.validateInputStringNotNullNotEmpty(validatePasswordStr)) {
+        } else if (!LoginValidator.validateInputStringNotNullNotEmpty(validatePasswordStr)) {
             Toast.makeText(this, R.string.emptyValidatePasswordField, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (!Validate.checkRegistrationLengthField(userStr)) {
+        if (!LoginValidator.checkRegistrationLengthField(userStr)) {
             Toast.makeText(this, R.string.fillInCorrectLengthUsername, Toast.LENGTH_SHORT).show();
             return;
-        } else if (!Validate.checkRegistrationLengthField(passwordStr)) {
+        } else if (!LoginValidator.checkRegistrationLengthField(passwordStr)) {
             Toast.makeText(this, R.string.fillInCorrectLengthPassword, Toast.LENGTH_SHORT).show();
             return;
-        } else if (!Validate.checkRegistrationLengthField(validatePasswordStr)) {
+        } else if (!LoginValidator.checkRegistrationLengthField(validatePasswordStr)) {
             Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (!Validate.checkIfEqual(passwordStr, validatePasswordStr)) {
+        if (!LoginValidator.checkIfEqual(passwordStr, validatePasswordStr)) {
             Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
             return;
         }

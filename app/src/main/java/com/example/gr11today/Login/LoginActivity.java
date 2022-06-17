@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.gr11today.Database;
 import com.example.gr11today.R;
-import com.example.gr11today.Validate;
+import com.example.gr11today.LoginValidator;
 import com.example.gr11today.models.User;
 import com.example.gr11today.tasks.TaskOverviewActivity;
 
@@ -46,10 +46,10 @@ public class LoginActivity extends AppCompatActivity {
         String passwordStr = passwordIdEt.getText().toString();
 
 
-        if (!Validate.validateInputStringNotNullNotEmpty(userStr)) {
+        if (!LoginValidator.validateInputStringNotNullNotEmpty(userStr)) {
             Toast.makeText(this, R.string.emptyUsernameField, Toast.LENGTH_SHORT).show();
             return;
-        } else if (!Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
+        } else if (!LoginValidator.validateInputStringNotNullNotEmpty(passwordStr)) {
             Toast.makeText(this, R.string.emptyPasswordField, Toast.LENGTH_SHORT).show();
             return;
         }

@@ -11,11 +11,11 @@ public class Logintest {
     public void checkIfAnyGivenStringIsCorrect() {
         //ARRANGE
         //E.g. username
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String username = "test";
 
         //ACT
-        boolean result = validate.validateInputStringNotNullNotEmpty(username);
+        boolean result = loginValidator.validateInputStringNotNullNotEmpty(username);
 
         //ASSERT
         boolean expected = true;
@@ -26,11 +26,11 @@ public class Logintest {
     public void checkIfAnyGivenStringNotEmpty() {
         //ARRANGE
         //E.g. username
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String username = "";
 
         //ACT
-        boolean result = validate.validateInputStringNotNullNotEmpty(username);
+        boolean result = loginValidator.validateInputStringNotNullNotEmpty(username);
 
         //ASSERT
         boolean expected = false;
@@ -41,11 +41,11 @@ public class Logintest {
     public void checkIfAnyGivenStringNotNull() {
         //ARRANGE
         //E.g. username
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String testStringNull = null;
 
         //ACT
-        boolean result = validate.validateInputStringNotNullNotEmpty(testStringNull);
+        boolean result = loginValidator.validateInputStringNotNullNotEmpty(testStringNull);
 
         //ASSERT
         boolean expected = false;
@@ -55,12 +55,12 @@ public class Logintest {
     @Test
     public void checkIfPasswordsAreEqual() {
         //ARRANGE
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestPassword1 = "correct";
         String TestPassword2 = "correct";
 
         //ACT
-        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
         boolean expected = true;
@@ -70,12 +70,12 @@ public class Logintest {
     @Test
     public void checkIfPasswordsAreNotEqual() {
         //ARRANGE
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestPassword1 = "correct";
         String TestPassword2 = "incorrect";
 
         //ACT
-        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
         boolean expected = true;
@@ -85,12 +85,12 @@ public class Logintest {
     @Test
     public void checkIfPasswordsOneIsNull() {
         //ARRANGE
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestPassword1 = "correct";
         String TestPassword2 = null;
 
         //ACT
-        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
         boolean expected = true;
@@ -100,12 +100,12 @@ public class Logintest {
     @Test
     public void checkIfPasswordsOneIsEmpty() {
         //ARRANGE
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestPassword1 = "correct";
         String TestPassword2 = "";
 
         //ACT
-        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
         boolean expected = true;
@@ -115,12 +115,12 @@ public class Logintest {
     @Test
     public void checkIfPasswordsBothAreEmpty() {
         //ARRANGE
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestPassword1 = "";
         String TestPassword2 = "";
 
         //ACT
-        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+        boolean result = loginValidator.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
         boolean expected = true;
@@ -131,11 +131,11 @@ public class Logintest {
     public void checkInputStringLengthNotHigherOrEqualToFive() {
         //ARRANGE
         //E.g. username
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestString = "Kees";
 
         //ACT
-        boolean result = validate.checkRegistrationLengthField(TestString);
+        boolean result = loginValidator.checkRegistrationLengthField(TestString);
 
         //ASSERT
         boolean expected = false;
@@ -146,11 +146,11 @@ public class Logintest {
     public void checkInputStringLengthHigherOrEqualToFive() {
         //ARRANGE
         //E.g. username
-        Validate validate = new Validate();
+        LoginValidator loginValidator = new LoginValidator();
         String TestString = "Karel";
 
         //ACT
-        boolean result = validate.checkRegistrationLengthField(TestString);
+        boolean result = loginValidator.checkRegistrationLengthField(TestString);
 
         //ASSERT
         boolean expected = true;
