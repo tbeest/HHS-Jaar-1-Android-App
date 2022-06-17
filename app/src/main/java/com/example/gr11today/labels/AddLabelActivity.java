@@ -17,13 +17,12 @@ import com.example.gr11today.models.User;
 
 public class AddLabelActivity extends AppCompatActivity {
 
-    private int taskId;
     private boolean editLabel = false;
     private int labelId;
     private String labelIdStr, name;
 
     private TaskValidator tv = new TaskValidator();
-    private EditText nameET, descriptionET;
+    private EditText nameET;
     private Button cancelB;
 
 

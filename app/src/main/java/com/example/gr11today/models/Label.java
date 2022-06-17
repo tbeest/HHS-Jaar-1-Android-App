@@ -1,9 +1,8 @@
 package com.example.gr11today.models;
 
-import static androidx.room.ForeignKey.SET_NULL;
-
 import android.content.Context;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
@@ -25,6 +24,7 @@ public class Label {
 
     private String name;
 
+    @ColumnInfo(index = true)
     private Integer userId;
 
     @Ignore
@@ -43,7 +43,6 @@ public class Label {
         this.name = name;
         this.labelId = labelId;
         this.userId = userId;
-
     }
 
     @Ignore
@@ -53,6 +52,7 @@ public class Label {
     }
 
     public static List<Label> getAll(Context context) {
+        System.out.println(User.getActiveUser().getUserId());
         return Database.getDatabase(context).labelDao().getAll(User.getActiveUser().getUserId());
     }
 

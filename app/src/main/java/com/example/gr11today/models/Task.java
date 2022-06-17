@@ -4,6 +4,7 @@ import static androidx.room.ForeignKey.SET_NULL;
 
 import android.content.Context;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
@@ -33,7 +34,9 @@ public class Task {
     @PrimaryKey(autoGenerate = true)
     private Integer taskId;
 
+    @ColumnInfo(index = true)
     private Integer labelId;
+    @ColumnInfo(index = true)
     private Integer userId;
 
     private String title;
@@ -45,9 +48,6 @@ public class Task {
 
     @Ignore
     private Label label;
-
-    @Ignore
-    private User user;
 
     @Ignore
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
