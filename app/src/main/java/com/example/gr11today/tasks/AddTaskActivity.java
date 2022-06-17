@@ -49,11 +49,11 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         setContentView(R.layout.activity_task);
         spinner = findViewById(R.id.add_task_label_spinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+        ArrayAdapter<Label> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_dropdown_item,
-                Label.getAllNames(this));
-        System.out.println("Adapter: " + adapter.getClass());
+                Label.getAll(this));
+        System.out.println("Adapter: " + adapter);
         spinner.setAdapter(adapter);
 
         System.out.println("OnCreate AddTaskActivity");

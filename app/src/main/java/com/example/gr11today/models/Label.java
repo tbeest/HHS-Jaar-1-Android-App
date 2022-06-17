@@ -20,6 +20,11 @@ public class Label {
     public Label() {
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     @Ignore
     public Label(String context, Integer labelId) {
         this.name = context;
@@ -33,10 +38,6 @@ public class Label {
 
     public static List<Label> getAll(Context context) {
         return Database.getDatabase(context).labelDao().getAll();
-    }
-
-    public static List<String> getAllNames(Context context) {
-        return Database.getDatabase(context).labelDao().getAllNames();
     }
 
     public static void addLabel(Label label, Context context) {
