@@ -58,6 +58,14 @@ public class TaskOverviewActivity extends AppCompatActivity {
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
+                if (result.getData() != null) {
+                    Bundle results = result.getData().getExtras();
+                    if (result != null) {
+                        labelId = results.getInt("LABELID");
+                    }
+                }
+                System.out.println("Label: " + labelId);
+
                 tasks.clear();
                 tasks.addAll(Task.getAll(getApplicationContext(), done, labelId));
                 recyclerView.getAdapter().notifyDataSetChanged();
@@ -71,7 +79,7 @@ public class TaskOverviewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Bundle resultIntent = getIntent().getExtras();
-        if(resultIntent != null) {
+        if (resultIntent != null) {
             done = resultIntent.getBoolean("DONE");
         }
         setDone(done);
@@ -85,6 +93,7 @@ public class TaskOverviewActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
 
     public void selectFilter(View view) {
         Intent intent = new Intent(this, SelectLabelActivity.class);

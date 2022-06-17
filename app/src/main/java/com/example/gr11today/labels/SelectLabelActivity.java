@@ -1,5 +1,6 @@
 package com.example.gr11today.labels;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,7 @@ public class SelectLabelActivity extends AppCompatActivity {
     private List<Label> labels;
 
     Button deleteButtonId;
-    LinearLayout bottomNavId;
+    LinearLayout bottomNavId, labelRowId;
     TextView titleId;
     FloatingActionButton addLabelButtonId, filterItemButtonId, signOutButtonId;
 
@@ -59,7 +60,6 @@ public class SelectLabelActivity extends AppCompatActivity {
                 labels.clear();
                 labels.addAll(Label.getAll(getApplicationContext()));
                 recyclerView.getAdapter().notifyDataSetChanged();
-                System.out.println("Refresh");
             }
         });
 
@@ -68,21 +68,17 @@ public class SelectLabelActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        deleteButtonId = findViewById(R.id.label_delete_button);
-        System.out.println(deleteButtonId);
-        if (deleteButtonId != null) {
-            deleteButtonId.setVisibility(View.GONE);
-        }
+        labelRowId = findViewById(R.id.label_row_layout_id);
     }
 
-    public void gotoEditLabel(View view) {
-        Intent intent = new Intent(this, TaskOverviewActivity.class);
+    public void finish(View view) {
+        Intent intent = new Intent();
 
         Integer labelId = (Integer) view.getTag();
-        String labelIdStr = labelId + "";
+        intent.putExtra("LABELID", labelId);
 
-        intent.putExtra("ID", labelIdStr);
+        setResult(Activity.RESULT_OK, intent);
 
-        launcher.launch(intent);
+        finish();
     }
 }
