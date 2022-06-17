@@ -23,8 +23,8 @@ import java.util.List;
 @Entity(foreignKeys = {
         @ForeignKey(
                 entity = Label.class,
-                parentColumns = "labelId",
-                childColumns = "id",
+                parentColumns = "labelId", //<--- verwijst naar de id column in Label.class
+                childColumns = "labelId",  //<--- verwijst naar de labelId column hier beneden in deze class.
                 onDelete = SET_NULL)
 
 /*
