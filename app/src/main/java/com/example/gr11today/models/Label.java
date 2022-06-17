@@ -1,22 +1,19 @@
 package com.example.gr11today.models;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
-import androidx.core.graphics.PathParser;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.gr11today.Database;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Label {
     @PrimaryKey(autoGenerate = true)
-    private Integer id;
+    private Integer labelId;
 
     private String name;
 
@@ -24,9 +21,9 @@ public class Label {
     }
 
     @Ignore
-    public Label(String context, Integer id) {
+    public Label(String context, Integer labelId) {
         this.name = context;
-        this.id = id;
+        this.labelId = labelId;
     }
 
     @Ignore
@@ -36,6 +33,10 @@ public class Label {
 
     public static List<Label> getAll(Context context) {
         return Database.getDatabase(context).labelDao().getAll();
+    }
+
+    public static List<String> getAllNames(Context context) {
+        return Database.getDatabase(context).labelDao().getAllNames();
     }
 
     public static void addLabel(Label label, Context context) {
@@ -51,7 +52,7 @@ public class Label {
     }
 
     public static void deleteLabel(Label label, Context context) {
-        if (label.getId() > 0) {
+        if (label.getLabelId() > 0) {
             Database.getDatabase(context).labelDao().delete(label);
         }
     }
@@ -64,11 +65,11 @@ public class Label {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getLabelId() {
+        return labelId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLabelId(Integer labelId) {
+        this.labelId = labelId;
     }
 }

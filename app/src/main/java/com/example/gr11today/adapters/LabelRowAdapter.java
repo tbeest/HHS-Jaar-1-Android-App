@@ -36,10 +36,10 @@ public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Label label = data.get(position);
         System.out.println("Name: " + label.getName());
-        System.out.println("ID: " + label.getId());
+        System.out.println("ID: " + label.getLabelId());
         holder.labelName.setText(label.getName());
-        holder.row.setTag(label.getId());
-        holder.deleteLabel.setTag(label.getId());
+        holder.row.setTag(label.getLabelId());
+        holder.deleteLabel.setTag(label.getLabelId());
     }
 
     @Override

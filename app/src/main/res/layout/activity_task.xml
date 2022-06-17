@@ -80,17 +80,17 @@
                     app:layout_constraintVertical_bias="0.0"
                     tools:text="dd/MM/yyyy  HH:mm" />
 
-                <TextView
-                    android:id="@+id/task_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Spinner
+                    android:id="@+id/add_task_label_spinner"
+                    android:layout_width="153dp"
+                    android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.711"
+                    app:layout_constraintHorizontal_bias="0.333"
                     app:layout_constraintStart_toEndOf="@+id/task_date"
-                    app:layout_constraintTop_toBottomOf="@+id/task_title"
-                    app:layout_constraintVertical_bias="0.517"
-                    tools:text="Label" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:listitem="@layout/support_simple_spinner_dropdown_item" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

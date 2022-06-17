@@ -20,18 +20,27 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-/*        (foreignKeys = {
+@Entity(foreignKeys = {
+        @ForeignKey(
+                entity = Label.class,
+                parentColumns = "labelId",
+                childColumns = "id",
+                onDelete = SET_NULL)
+
+/*
         @ForeignKey(
                 entity = User.class,
                 parentColumns = "id",
                 childColumns = "userID",
                 onDelete = SET_NULL)
-})*/
+)*/
+})
 
 public class Task {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
+
+    private Integer labelId;
 
     //private Integer userID;
     private String title;
@@ -43,8 +52,6 @@ public class Task {
 
     @Ignore
     private User user;
-    @Ignore
-    private Label label;
 
     @Ignore
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
@@ -57,7 +64,7 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", user=" + user +
-                ", label=" + label +
+                ", labelId=" + labelId +
                 '}';
     }
 
@@ -115,14 +122,6 @@ public class Task {
         this.done = done;
     }
 
-    @Ignore
-    public Task(String title, Date date, Label label, boolean done) {
-        this.title = title;
-        this.date = date;
-        this.label = label;
-        this.done = done;
-    }
-
 
     public Integer getId() {
         return id;
@@ -171,6 +170,14 @@ public class Task {
 
     public Boolean getDone() {
         return done;
+    }
+
+    public Integer getLabelId() {
+        return labelId;
+    }
+
+    public void setLabelId(Integer labelId) {
+        this.labelId = labelId;
     }
 
     public void setDone(Boolean done) {

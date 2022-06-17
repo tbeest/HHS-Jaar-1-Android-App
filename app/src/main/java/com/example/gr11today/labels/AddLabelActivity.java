@@ -64,7 +64,7 @@ public class AddLabelActivity extends AppCompatActivity {
 
     public void saveLabel(Label label, boolean editLabel) {
         if (editLabel) {
-            label.setId(labelId);
+            label.setLabelId(labelId);
             label.updateLabel(label, this);
             Toast.makeText(this, R.string.addLabelLabelEdited, Toast.LENGTH_SHORT).show();
 

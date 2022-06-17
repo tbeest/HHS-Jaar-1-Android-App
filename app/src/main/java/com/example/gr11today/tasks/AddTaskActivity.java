@@ -5,10 +5,12 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.gr11today.Database;
 import com.example.gr11today.R;
 import com.example.gr11today.TaskValidator;
+import com.example.gr11today.models.Label;
 import com.example.gr11today.models.Task;
 
 import java.text.DateFormat;
@@ -37,12 +40,21 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     CheckBox taskCB;
     TaskValidator tv = new TaskValidator();
     Button dateB;
+    Spinner spinner;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
+        spinner = findViewById(R.id.add_task_label_spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                Label.getAllNames(this));
+        System.out.println("Adapter: " + adapter.getClass());
+        spinner.setAdapter(adapter);
 
         System.out.println("OnCreate AddTaskActivity");
 
