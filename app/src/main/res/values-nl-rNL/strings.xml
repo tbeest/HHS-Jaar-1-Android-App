@@ -47,4 +47,5 @@
     <string name="addLabelLabelDelete">Label verwijderd</string>
     <string name="addLabelLabelAdded">Label toegevoegd</string>
     <string name="addLabelLabelEdited">Label bewerkt</string>
+    <string name="tooltipAddNewLabel">Voeg nieuw label toe</string>
 </resources>

@@ -19,9 +19,7 @@ import com.example.gr11today.Database;
 import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.LabelRowAdapter;
-import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.models.Label;
-import com.example.gr11today.models.Task;
 import com.example.gr11today.tasks.ClosedTasksActivity;
 import com.example.gr11today.tasks.OpenTasksActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,7 +34,7 @@ public class LabelOverviewActivity extends AppCompatActivity {
 
     Button openTasksButtonId, closedTasksButtonId, labelButtonId, deleteButtonId;
     TextView titleId, nameId;
-    FloatingActionButton addLabelButtonId;
+    FloatingActionButton addLabelButtonId, filterItemButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +44,14 @@ public class LabelOverviewActivity extends AppCompatActivity {
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
         labelButtonId = findViewById(R.id.labelButton);
         addLabelButtonId = findViewById(R.id.addTaskButton);
+        filterItemButton = findViewById((R.id.filterTasksButton));
+        filterItemButton.setVisibility(View.GONE);
         titleId = findViewById(R.id.taskTitleId);
+
+        addLabelButtonId.setTooltipText("Add new label");
+        addLabelButtonId.setContentDescription("Add new label");
+//        addLabelButtonId.setTooltipText(R.string.toDoTitleLabel);
+//        addLabelButtonId.setContentDescription(R.string.toDoTitleLabel);
 
         titleId.setText(R.string.toDoTitleLabel);
 
