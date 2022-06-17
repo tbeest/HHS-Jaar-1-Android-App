@@ -12,12 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gr11today.R;
+import com.example.gr11today.TaskValidator;
 import com.example.gr11today.models.Task;
 
 import java.util.List;
 
 public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHolder> {
     private List<Task> data;
+    TaskValidator tv = new TaskValidator();
 
     public TaskRowAdapter(List<Task> data) {
         this.data = data;
@@ -39,6 +41,9 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         String date = task.getDateString();
         holder.taskDate.setText(date);
         holder.taskDone.setChecked(task.getDone());
+        if (task.getLabel() != null) {
+            holder.label.setText(task.getLabel().getName());
+        }
         holder.row.setTag(task.getId());
         holder.taskDone.setTag(task.getId());
 
@@ -57,6 +62,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         private TextView taskDate;
         private CheckBox taskDone;
         private LinearLayout row;
+        private TextView label;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,6 +70,8 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
             taskDate = itemView.findViewById(R.id.task_date);
             taskDone = itemView.findViewById(R.id.task_checkBox);
             row = itemView.findViewById(R.id.task_row_layout_id);
+            label = itemView.findViewById(R.id.task_label);
+
         }
     }
 }

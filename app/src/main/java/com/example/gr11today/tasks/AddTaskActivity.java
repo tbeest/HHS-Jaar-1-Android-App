@@ -51,9 +51,10 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
 
         ArrayAdapter<Label> adapter = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_dropdown_item,
-                Label.getAll(this));
-        System.out.println("Adapter: " + adapter);
+                android.R.layout.simple_spinner_dropdown_item);
+        adapter.add(new Label("<Set label>", null));
+        adapter.addAll(Label.getAll(this));
+
         spinner.setAdapter(adapter);
 
         System.out.println("OnCreate AddTaskActivity");
@@ -102,6 +103,8 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         description = descriptionET.getText().toString();
         boolean status = taskCB.isChecked();
 
+
+
         if (!tv.stringNotEmpty(title)) {
             Toast.makeText(this, R.string.errorTitleRequired, Toast.LENGTH_SHORT).show();
         } else {
@@ -126,6 +129,10 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void saveTask(Task task, boolean editTask) {
+        spinner = findViewById(R.id.add_task_label_spinner);
+        Label label = (Label) spinner.getSelectedItem();
+        task.setLabelId(label.getLabelId());
+
         if (editTask) {
             task.setId(taskId);
             Task.updateTask(task, this);

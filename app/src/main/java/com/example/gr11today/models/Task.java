@@ -51,8 +51,7 @@ public class Task {
     private Boolean done;
 
     @Ignore
-    private User user;
-
+    private Label label;
     @Ignore
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
 
@@ -63,7 +62,6 @@ public class Task {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", date=" + date +
-                ", user=" + user +
                 ", labelId=" + labelId +
                 '}';
     }
@@ -91,11 +89,25 @@ public class Task {
     }
 
     public static List<Task> getAllOpen(Context context) {
-        return Database.getDatabase(context).taskDao().getAllOpen();
+        List<Task> tasks = Database.getDatabase(context).taskDao().getAllOpen();
+
+        for (Task task : tasks) {
+            if (task.labelId != null) {
+                task.label = Database.getDatabase(context).labelDao().getById(task.labelId);
+            }
+        }
+        return tasks;
     }
 
     public static List<Task> getAllClosed(Context context) {
-        return Database.getDatabase(context).taskDao().getAllClosed();
+        List<Task> tasks = Database.getDatabase(context).taskDao().getAllClosed();
+
+        for (Task task : tasks) {
+            if (task.labelId != null) {
+                task.label = Database.getDatabase(context).labelDao().getById(task.labelId);
+            }
+        }
+        return tasks;
     }
 
     public Task() {
@@ -122,6 +134,22 @@ public class Task {
         this.done = done;
     }
 
+    @Ignore
+    public Task(String title, String description, Date date, Boolean done, Integer labelId) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.done = done;
+        this.labelId = labelId;
+    }
+
+    @Ignore
+    public Task(String title, String description, Boolean done, Integer labelId) {
+        this.title = title;
+        this.description = description;
+        this.done = done;
+        this.labelId = labelId;
+    }
 
     public Integer getId() {
         return id;
@@ -145,14 +173,6 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Date getDate() {
@@ -182,6 +202,14 @@ public class Task {
 
     public void setDone(Boolean done) {
         this.done = done;
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
 /*    public Integer getUserId() {
