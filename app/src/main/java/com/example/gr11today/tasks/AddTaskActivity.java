@@ -30,17 +30,17 @@ import java.util.Date;
 
 
 public class AddTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    int day, month, year, hour, minute;
-    int myDay, myMonth, myYear, myHour, myMinute;
-    String strDate, title, description;
-    int taskId;
-    boolean editTask = false;
+    private int day, month, year, hour, minute;
+    private int myDay, myMonth, myYear, myHour, myMinute;
+    private String strDate, title, description;
+    private int taskId;
+    private boolean editTask = false;
 
-    EditText titleET, descriptionET;
-    CheckBox taskCB;
-    TaskValidator tv = new TaskValidator();
-    Button dateB;
-    Spinner spinner;
+    private EditText titleET, descriptionET;
+    private CheckBox taskCB;
+    private TaskValidator tv = new TaskValidator();
+    private Button dateB;
+    private Spinner spinner;
 
 
     @Override

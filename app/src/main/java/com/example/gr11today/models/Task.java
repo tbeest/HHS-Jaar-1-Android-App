@@ -76,23 +76,14 @@ public class Task {
         }
     }
 
-    public static List<Task> getAll(Context context) {
-        return Database.getDatabase(context).taskDao().getAll();
-    }
+    public static List<Task> getAll(Context context, boolean done, int labelId) {
+        List<Task> tasks;
 
-    public static List<Task> getAllOpen(Context context) {
-        List<Task> tasks = Database.getDatabase(context).taskDao().getAllOpen();
-
-        for (Task task : tasks) {
-            if (task.labelId != null) {
-                task.label = Database.getDatabase(context).labelDao().getById(task.labelId);
-            }
+        if (labelId > 0) {
+            tasks = Database.getDatabase(context).taskDao().getAllLabel(done, labelId);
+        } else {
+            tasks = Database.getDatabase(context).taskDao().getAll(done);
         }
-        return tasks;
-    }
-
-    public static List<Task> getAllClosed(Context context) {
-        List<Task> tasks = Database.getDatabase(context).taskDao().getAllClosed();
 
         for (Task task : tasks) {
             if (task.labelId != null) {

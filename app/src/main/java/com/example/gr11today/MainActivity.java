@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gr11today.models.User;
-import com.example.gr11today.tasks.OpenTasksActivity;
+import com.example.gr11today.tasks.TaskOverviewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (userInDb.getUsername().equals(userStr) &&
             userInDb.getPassword().equals(passwordStr)) {
-            Intent intent = new Intent(this, OpenTasksActivity.class);
+            Intent intent = new Intent(this, TaskOverviewActivity.class);
             startActivity(intent);
         }
     }

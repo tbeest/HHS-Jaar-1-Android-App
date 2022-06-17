@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:scrollbarSize="14dp"
-    tools:context=".tasks.OpenTasksActivity">
+    tools:context=".tasks.TaskOverviewActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasks_list"

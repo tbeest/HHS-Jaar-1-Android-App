@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.gr11today.Database;
 import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
+import com.example.gr11today.TaskValidator;
 import com.example.gr11today.adapters.TaskRowAdapter;
 import com.example.gr11today.labels.LabelOverviewActivity;
 import com.example.gr11today.labels.SelectLabelActivity;
@@ -27,15 +28,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class OpenTasksActivity extends AppCompatActivity {
+public class TaskOverviewActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> launcher;
     private RecyclerView recyclerView;
     private List<Task> tasks;
+    private int labelId;
+    private boolean done = false;
 
-    Button openTasksButtonId, closedTasksButtonId, labelButtonId;
-    TextView titleId;
-    FloatingActionButton filterButtonId;
+    private Button openTasksButtonId, closedTasksButtonId, labelButtonId;
+    private TextView titleId;
+    private FloatingActionButton filterButtonId;
+
+    private TaskValidator tv = new TaskValidator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +52,14 @@ public class OpenTasksActivity extends AppCompatActivity {
         titleId = findViewById(R.id.taskTitleId);
         filterButtonId = findViewById(R.id.filterTasksButton);
 
-        titleId.setText(R.string.toDoTitleToDo);
 
-        tasks = Task.getAllOpen(this);
+        tasks = Task.getAll(this, done, labelId);
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
                 tasks.clear();
-                tasks.addAll(Task.getAllOpen(getApplicationContext()));
+                tasks.addAll(Task.getAll(getApplicationContext(), done, labelId));
                 recyclerView.getAdapter().notifyDataSetChanged();
                 System.out.println("Refresh");
             }
@@ -66,7 +70,14 @@ public class OpenTasksActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, ClosedTasksActivity.class)));
+        Bundle resultIntent = getIntent().getExtras();
+        if(resultIntent != null) {
+            done = resultIntent.getBoolean("DONE");
+        }
+        setDone(done);
+
+        closedTasksButtonId.setOnClickListener(v -> setDone(true));
+        openTasksButtonId.setOnClickListener(v -> setDone(false));
         labelButtonId.setOnClickListener(v -> startActivity(new Intent(this, LabelOverviewActivity.class)));
         filterButtonId.setOnClickListener(v -> selectFilter(v));
     }
@@ -82,7 +93,7 @@ public class OpenTasksActivity extends AppCompatActivity {
     }
 
     public void gotoEditTask(View view) {
-        Intent intent = new Intent(OpenTasksActivity.this, AddTaskActivity.class);
+        Intent intent = new Intent(TaskOverviewActivity.this, AddTaskActivity.class);
 
         Integer taskId = (Integer) view.getTag();
         String taskIdStr = taskId + "";
@@ -92,6 +103,20 @@ public class OpenTasksActivity extends AppCompatActivity {
         intent.putExtra("ID", taskIdStr);
 
         launcher.launch(intent);
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+
+        if (done) {
+            titleId.setText(R.string.toDoTitleDone);
+        } else {
+            titleId.setText(R.string.toDoTitleToDo);
+        }
+
+        tasks.clear();
+        tasks.addAll(Task.getAll(getApplicationContext(), done, labelId));
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
 
     public void setStatus(View view) {
@@ -111,7 +136,7 @@ public class OpenTasksActivity extends AppCompatActivity {
         Task.updateTask(task, this);
 
         tasks.clear();
-        tasks.addAll(Task.getAllOpen(getApplicationContext()));
+        tasks.addAll(Task.getAll(getApplicationContext(), done, labelId));
         recyclerView.getAdapter().notifyDataSetChanged();
     }
 
@@ -120,10 +145,10 @@ public class OpenTasksActivity extends AppCompatActivity {
     }
 
     public void addTask(View view) {
-        launcher.launch(new Intent(OpenTasksActivity.this, AddTaskActivity.class));
+        launcher.launch(new Intent(TaskOverviewActivity.this, AddTaskActivity.class));
     }
 
     public void signOut(View view) {
-        startActivity(new Intent(OpenTasksActivity.this, MainActivity.class));
+        startActivity(new Intent(TaskOverviewActivity.this, MainActivity.class));
     }
 }

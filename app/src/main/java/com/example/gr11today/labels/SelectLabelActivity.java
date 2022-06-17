@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gr11today.R;
-import com.example.gr11today.TaskValidator;
 import com.example.gr11today.adapters.LabelRowAdapter;
 import com.example.gr11today.models.Label;
+import com.example.gr11today.tasks.TaskOverviewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -29,11 +29,9 @@ public class SelectLabelActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Label> labels;
 
-    TaskValidator tv = new TaskValidator();
-
-    Button openTasksButtonId, closedTasksButtonId, labelButtonId, deleteButtonId;
+    Button deleteButtonId;
     LinearLayout bottomNavId;
-    TextView titleId, nameId;
+    TextView titleId;
     FloatingActionButton addLabelButtonId, filterItemButtonId, signOutButtonId;
 
     @Override
@@ -43,7 +41,6 @@ public class SelectLabelActivity extends AppCompatActivity {
         bottomNavId = findViewById(R.id.linearLayoutBottomNav);
         bottomNavId.setVisibility(View.GONE);
 
-//        deleteButtonId.setTooltipText("Lol");
         addLabelButtonId = findViewById(R.id.addTaskButton);
         addLabelButtonId.setVisibility(View.GONE);
         filterItemButtonId = findViewById((R.id.filterTasksButton));
@@ -52,7 +49,7 @@ public class SelectLabelActivity extends AppCompatActivity {
         signOutButtonId.setVisibility(View.GONE);
 
         titleId = findViewById(R.id.taskTitleId);
-        titleId.setText(R.string.toDoTitleLabel);
+        titleId.setText(R.string.toDoTitleSelectLabel);
 
         labels = Label.getAll(this);
 
@@ -79,7 +76,7 @@ public class SelectLabelActivity extends AppCompatActivity {
     }
 
     public void gotoEditLabel(View view) {
-        Intent intent = new Intent(this, AddLabelActivity.class);
+        Intent intent = new Intent(this, TaskOverviewActivity.class);
 
         Integer labelId = (Integer) view.getTag();
         String labelIdStr = labelId + "";

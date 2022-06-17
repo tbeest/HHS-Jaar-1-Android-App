@@ -20,8 +20,8 @@ import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.LabelRowAdapter;
 import com.example.gr11today.models.Label;
-import com.example.gr11today.tasks.ClosedTasksActivity;
-import com.example.gr11today.tasks.OpenTasksActivity;
+//import com.example.gr11today.tasks.ClosedTasksActivity;
+import com.example.gr11today.tasks.TaskOverviewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -32,9 +32,9 @@ public class LabelOverviewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Label> labels;
 
-    Button openTasksButtonId, closedTasksButtonId, labelButtonId, deleteButtonId;
-    TextView titleId, nameId;
-    FloatingActionButton addLabelButtonId, filterItemButton;
+    private Button openTasksButtonId, closedTasksButtonId, labelButtonId, deleteButtonId;
+    private TextView titleId, nameId;
+    private FloatingActionButton addLabelButtonId, filterItemButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +72,8 @@ public class LabelOverviewActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        closedTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, ClosedTasksActivity.class)));
-        openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, OpenTasksActivity.class)));
+        closedTasksButtonId.setOnClickListener(v -> goToTasks(true));
+        openTasksButtonId.setOnClickListener(v -> goToTasks(false));
         addLabelButtonId.setOnClickListener(v -> launcher.launch(new Intent(this, AddLabelActivity.class)));
     }
 
@@ -86,6 +86,14 @@ public class LabelOverviewActivity extends AppCompatActivity {
         intent.putExtra("ID", labelIdStr);
 
         launcher.launch(intent);
+    }
+
+    public void goToTasks(boolean done) {
+        Intent intent = new Intent(this, TaskOverviewActivity.class);
+
+        intent.putExtra("DONE", done);
+
+        startActivity(intent);
     }
 
     public void deleteLabel(View view) {
