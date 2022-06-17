@@ -44,10 +44,10 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         if (task.getLabel() != null) {
             holder.label.setText(task.getLabel().getName());
         }
-        holder.row.setTag(task.getId());
-        holder.taskDone.setTag(task.getId());
+        holder.row.setTag(task.getTaskId());
+        holder.taskDone.setTag(task.getTaskId());
 
-        System.out.println("Task ID of row:" + task.getId());
+        System.out.println("Task ID of row:" + task.getTaskId());
     }
 
 

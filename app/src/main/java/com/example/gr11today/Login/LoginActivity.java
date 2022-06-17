@@ -61,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (userInDb.getPassword().equals(passwordStr)) {
+            User user = new User();
+            user.setActiveUser(Database.getDatabase(getApplicationContext()).userDao().getByUsername(userStr));
             Intent intent = new Intent(this, TaskOverviewActivity.class);
             startActivity(intent);
         }

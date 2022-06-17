@@ -12,13 +12,13 @@ import java.util.List;
 
 @Dao
 public interface TaskDao {
-    @Query("SELECT * FROM task WHERE done == :done")
-    List<Task> getAll(boolean done);
+    @Query("SELECT * FROM task WHERE done == :done AND userId == :userId")
+    List<Task> getAll(boolean done, int userId);
 
-    @Query("SELECT * FROM task WHERE done == :done AND labelId = :labelId")
-    List<Task> getAllLabel(boolean done, int labelId);
+    @Query("SELECT * FROM task WHERE done == :done AND labelId = :labelId AND userId == :userId")
+    List<Task> getAllLabel(boolean done, int labelId, int userId);
 
-    @Query("SELECT * FROM task WHERE id = :id")
+    @Query("SELECT * FROM task WHERE taskId = :id")
     Task getById(int id);
 
 /*    @Query("SELECT * FROM task WHERE userID = :userID")

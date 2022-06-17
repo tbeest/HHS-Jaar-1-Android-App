@@ -17,7 +17,7 @@
             android:name=".tasks.AddTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".Login.RegisterActivity"
+            android:name=".labels.SelectLabelActivity"
             android:exported="false" />
         <activity
             android:name=".Login.LoginActivity"
@@ -29,10 +29,10 @@
             android:name=".labels.AddLabelActivity"
             android:exported="false" />
         <activity
-            android:name=".labels.SelectLabelActivity"
+            android:name=".tasks.TaskOverviewActivity"
             android:exported="false" />
         <activity
-            android:name=".tasks.TaskOverviewActivity"
+            android:name=".Login.RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,22 +1,18 @@
 package com.example.gr11today.models;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
-import com.example.gr11today.Converters;
 import com.example.gr11today.Database;
-
-import java.util.List;
 
 @Entity
 public class User {
     @PrimaryKey(autoGenerate = true)
-    private Integer id;
+    private Integer userId;
 
     @ColumnInfo(name = "name")
     private String username;
@@ -25,7 +21,7 @@ public class User {
     private String password;
 
     @Ignore
-    User activeUser;
+    private static User activeUser;
 
     public User() {
     }
@@ -39,7 +35,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
@@ -51,20 +47,20 @@ public class User {
         }
     }
 
-    public void setActiveUser(User user) {
+    public static void setActiveUser(User user) {
         activeUser = user;
     }
 
-    public User getActiveUser() {
+    public static User getActiveUser() {
         return activeUser;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {

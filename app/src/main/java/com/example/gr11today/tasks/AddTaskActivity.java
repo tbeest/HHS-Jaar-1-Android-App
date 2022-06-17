@@ -21,6 +21,7 @@ import com.example.gr11today.R;
 import com.example.gr11today.TaskValidator;
 import com.example.gr11today.models.Label;
 import com.example.gr11today.models.Task;
+import com.example.gr11today.models.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -134,12 +135,12 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         task.setLabelId(label.getLabelId());
 
         if (editTask) {
-            task.setId(taskId);
+            task.setTaskId(taskId);
             Task.updateTask(task, this);
             Toast.makeText(this, R.string.addTaskTaskEdited, Toast.LENGTH_SHORT).show();
 
         } else {
-            Task.addTask(task, this);
+            Task.addTask(task, User.getActiveUser(), this);
             Toast.makeText(this, R.string.addTaskTaskAdded, Toast.LENGTH_SHORT).show();
         }
     }

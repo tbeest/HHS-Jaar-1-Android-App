@@ -79,9 +79,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         User user = new User(userStr, passwordStr);;
         User.addUser(user, this);
+        User.setActiveUser(Database.getDatabase(getApplicationContext()).userDao().getByUsername(userStr));
 
         Toast.makeText(this, R.string.fieldsFilledInCorrectly, Toast.LENGTH_SHORT).show();
-
         startActivity(new Intent(this, TaskOverviewActivity.class));
     }
 }

@@ -3,7 +3,6 @@ package com.example.gr11today.models;
 import static androidx.room.ForeignKey.SET_NULL;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -13,24 +12,27 @@ import androidx.room.TypeConverters;
 
 import com.example.gr11today.Converters;
 import com.example.gr11today.Database;
+import com.example.gr11today.TaskValidator;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @Entity(foreignKeys = {
         @ForeignKey(
                 entity = Label.class,
-                parentColumns = "labelId", //<--- verwijst naar de id column in Label.class
-                childColumns = "labelId",  //<--- verwijst naar de labelId column hier beneden in deze class.
-                onDelete = SET_NULL)
+                parentColumns = "labelId",
+                childColumns = "labelId",
+                onDelete = SET_NULL),
+        @ForeignKey(
+                entity = User.class,
+                parentColumns = "userId",
+                childColumns = "userId")
 })
 
 public class Task {
     @PrimaryKey(autoGenerate = true)
-    private Integer id;
+    private Integer taskId;
 
     private Integer labelId;
     private Integer userId;
@@ -55,7 +57,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "id=" + id +
+                "id=" + taskId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", date=" + date +
@@ -65,20 +67,22 @@ public class Task {
     }
 
 
-    public static void addTask(Task task, Context context) {
-        if (task != null) {
+    public static void addTask(Task task, User user, Context context) {
+        if (user != null) {
+            task.setUserId(user.getUserId());
             Database.getDatabase(context).taskDao().insert(task);
         }
     }
 
     public static void updateTask(Task task, Context context) {
         if (task != null) {
+            task.setUserId(User.getActiveUser().getUserId());
             Database.getDatabase(context).taskDao().update(task);
         }
     }
 
     public static void deleteTask(Task task, Context context) {
-        if (task.getId() > 0) {
+        if (task.getTaskId() > 0) {
             Database.getDatabase(context).taskDao().delete(task);
         }
     }
@@ -87,9 +91,9 @@ public class Task {
         List<Task> tasks;
 
         if (labelId > 0) {
-            tasks = Database.getDatabase(context).taskDao().getAllLabel(done, labelId);
+            tasks = Database.getDatabase(context).taskDao().getAllLabel(done, labelId, User.getActiveUser().getUserId());
         } else {
-            tasks = Database.getDatabase(context).taskDao().getAll(done);
+            tasks = Database.getDatabase(context).taskDao().getAll(done, User.getActiveUser().getUserId());
         }
 
         for (Task task : tasks) {
@@ -141,12 +145,12 @@ public class Task {
         this.labelId = labelId;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getTaskId() {
+        return taskId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
     }
 
     public String getTitle() {
