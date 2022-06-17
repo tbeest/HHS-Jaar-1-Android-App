@@ -100,17 +100,6 @@ public class Task {
         return tasks;
     }
 
-    /*    public static List<Task> getAllTasksByUserId(Context context) {
-        List<Task> tasks = Database.getDatabase(context).taskDao().getAllTasksByUserId();
-
-        for (Task task : tasks) {
-            if (task.userId != null) {
-                task.user = Database.getDatabase(context).userDao().getById(task.userId);
-            }
-        }
-        return tasks;
-    }*/
-
     public Task() {
     }
 

@@ -15,6 +15,7 @@ import com.example.gr11today.R;
 import com.example.gr11today.Validate;
 import com.example.gr11today.daos.UserDao;
 import com.example.gr11today.models.User;
+import com.example.gr11today.tasks.TaskOverviewActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -46,17 +47,21 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!Validate.validateInputStringNotNullNotEmpty(userStr)) {
             Toast.makeText(this, R.string.emptyUsernameField, Toast.LENGTH_SHORT).show();
+            return;
         } else if (!Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
             Toast.makeText(this, R.string.emptyPasswordField, Toast.LENGTH_SHORT).show();
+            return;
         } else if (!Validate.validateInputStringNotNullNotEmpty(validatePasswordStr)) {
             Toast.makeText(this, R.string.emptyValidatePasswordField, Toast.LENGTH_SHORT).show();
             return;
-            }
+        }
 
         if (!Validate.checkRegistrationLengthField(userStr)) {
             Toast.makeText(this, R.string.fillInCorrectLengthUsername, Toast.LENGTH_SHORT).show();
+            return;
         } else if (!Validate.checkRegistrationLengthField(passwordStr)) {
             Toast.makeText(this, R.string.fillInCorrectLengthPassword, Toast.LENGTH_SHORT).show();
+            return;
         } else if (!Validate.checkRegistrationLengthField(validatePasswordStr)) {
             Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
             return;
@@ -72,14 +77,11 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        User user = new User();
-        user.setUsername(userStr);
-        user.setPassword(passwordStr);
-        Database database = Database.getDatabase(getApplicationContext());
-        final UserDao userDao = database.userDao();
-        new Thread(() -> {
-            userDao.registerUser(user);
-            Toast.makeText(this, R.string.fieldsFilledInCorrectly, Toast.LENGTH_SHORT).show();
-        }).start();
+        User user = new User(userStr, passwordStr);;
+        User.addUser(user, this);
+
+        Toast.makeText(this, R.string.fieldsFilledInCorrectly, Toast.LENGTH_SHORT).show();
+
+        startActivity(new Intent(this, TaskOverviewActivity.class));
     }
 }

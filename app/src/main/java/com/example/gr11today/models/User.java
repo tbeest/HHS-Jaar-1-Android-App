@@ -1,6 +1,7 @@
 package com.example.gr11today.models;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -42,6 +43,12 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public static void addUser(User user, Context context) {
+        if (user != null) {
+            Database.getDatabase(context).userDao().insert(user);
+        }
     }
 
     public void setActiveUser(User user) {

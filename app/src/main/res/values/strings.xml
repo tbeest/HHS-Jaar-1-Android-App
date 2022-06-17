@@ -40,8 +40,8 @@
     <string name="openTasksMarkedOpen">Marked To Do</string>
     <string name="accountDoesntExist">Account does not exist</string>
     <string name="accountAlreadyExists">Account already exists</string>
-    <string name="fillInCorrectLengthUsername">Characters used for username to short</string>
-    <string name="fillInCorrectLengthPassword">Characters used for password to short</string>
+    <string name="fillInCorrectLengthUsername">Characters used for username too short</string>
+    <string name="fillInCorrectLengthPassword">Characters used for password too short</string>
     <string name="labelsDeleteLabel">Delete label</string>
     <string name="toDoTitleLabel">Labels</string>
     <string name="labelNameHint">Set label name</string>

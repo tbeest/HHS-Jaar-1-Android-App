@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (!Validate.validateInputStringNotNullNotEmpty(userStr)) {
             Toast.makeText(this, R.string.emptyUsernameField, Toast.LENGTH_SHORT).show();
+            return;
         } else if (!Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
             Toast.makeText(this, R.string.emptyPasswordField, Toast.LENGTH_SHORT).show();
             return;
@@ -59,8 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        if (userInDb.getUsername().equals(userStr) &&
-            userInDb.getPassword().equals(passwordStr)) {
+        if (userInDb.getPassword().equals(passwordStr)) {
             Intent intent = new Intent(this, TaskOverviewActivity.class);
             startActivity(intent);
         }
