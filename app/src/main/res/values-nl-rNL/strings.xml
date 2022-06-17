@@ -39,4 +39,12 @@
     <string name="accountDoesntExist">Account bestaat niet</string>
     <string name="accountAlreadyExists">Account bestaat al</string>
     <string name="fillInCorrectLength">Te weinig karakters gebruikt</string>
+    <string name="labelsDeleteLabel">Verwijder label</string>
+    <string name="toDoTitleLabel">Labels</string>
+    <string name="labelNameHint">Stel label naam in</string>
+    <string name="tooltipLabelDelete">Label verwijderen</string>
+    <string name="errorLabelNameRequired">Error: een label naam is verplicht</string>
+    <string name="addLabelLabelDelete">Label verwijderd</string>
+    <string name="addLabelLabelAdded">Label toegevoegd</string>
+    <string name="addLabelLabelEdited">Label bewerkt</string>
 </resources>

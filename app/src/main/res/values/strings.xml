@@ -39,4 +39,12 @@
     <string name="accountDoesntExist">Account does not exist</string>
     <string name="accountAlreadyExists">Account does not exist</string>
     <string name="fillInCorrectLength">Characters used to short</string>
+    <string name="labelsDeleteLabel">Delete label</string>
+    <string name="toDoTitleLabel">Labels</string>
+    <string name="labelNameHint">Set label name</string>
+    <string name="tooltipLabelDelete">Delete label</string>
+    <string name="errorLabelNameRequired">Error: label name is required</string>
+    <string name="addLabelLabelDelete">Label deleted</string>
+    <string name="addLabelLabelAdded">Added label</string>
+    <string name="addLabelLabelEdited">Label edited</string>
 </resources>

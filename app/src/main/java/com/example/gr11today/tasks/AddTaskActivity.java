@@ -1,4 +1,4 @@
-package com.example.gr11today.task;
+package com.example.gr11today.tasks;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -29,7 +29,7 @@ import java.util.Date;
 public class AddTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     int day, month, year, hour, minute;
     int myDay, myMonth, myYear, myHour, myMinute;
-    String strDate;
+    String strDate, title, description;
     int taskId;
     boolean editTask = false;
 
@@ -86,8 +86,8 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         descriptionET = findViewById(R.id.task_description);
         taskCB = findViewById(R.id.task_checkBox);
 
-        String title = titleET.getText().toString();
-        String description = descriptionET.getText().toString();
+        title = titleET.getText().toString();
+        description = descriptionET.getText().toString();
         boolean status = taskCB.isChecked();
 
         if (!tv.stringNotEmpty(title)) {

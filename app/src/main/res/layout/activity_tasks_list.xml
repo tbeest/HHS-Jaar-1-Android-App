@@ -61,7 +61,7 @@
             android:text="@string/closedTasksButton" />
 
         <Button
-            android:id="@+id/labelsButton"
+            android:id="@+id/labelButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="50dp"

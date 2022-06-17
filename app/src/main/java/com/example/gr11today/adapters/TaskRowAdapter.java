@@ -42,13 +42,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         holder.row.setTag(task.getId());
         holder.taskDone.setTag(task.getId());
 
-
         System.out.println("Task ID of row:" + task.getId());
-
-/*        @Override
-        public void onClick(View view)() {
-
-        }*/
     }
 
 

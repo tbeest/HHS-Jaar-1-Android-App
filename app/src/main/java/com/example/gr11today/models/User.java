@@ -3,6 +3,7 @@ package com.example.gr11today.models;
 import android.content.Context;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
@@ -25,6 +26,7 @@ public class User {
     public User() {
     }
 
+    @Ignore
     public User(String username, String password) {
         this.username = username;
         this.password = password;

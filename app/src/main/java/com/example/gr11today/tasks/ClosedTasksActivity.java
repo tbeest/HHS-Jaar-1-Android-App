@@ -20,8 +20,8 @@ import com.example.gr11today.Database;
 import com.example.gr11today.MainActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.TaskRowAdapter;
+import com.example.gr11today.labels.LabelOverviewActivity;
 import com.example.gr11today.models.Task;
-import com.example.gr11today.task.AddTaskActivity;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Task> tasks;
 
-    Button openTasksButtonId, closedTasksButtonId;
+    Button openTasksButtonId, closedTasksButtonId, labelButtonId;
     TextView titleId;
 
     @Override
@@ -40,6 +40,7 @@ public class ClosedTasksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tasks_list);
         openTasksButtonId = findViewById(R.id.openTasksButton);
         closedTasksButtonId = findViewById(R.id.closedTasksButton);
+        labelButtonId = findViewById(R.id.labelButton);
         titleId = findViewById(R.id.taskTitleId);
 
         titleId.setText(R.string.toDoTitleDone);
@@ -62,7 +63,8 @@ public class ClosedTasksActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(ClosedTasksActivity.this, OpenTasksActivity.class)));
+        openTasksButtonId.setOnClickListener(v -> startActivity(new Intent(this, OpenTasksActivity.class)));
+        labelButtonId.setOnClickListener(v -> startActivity(new Intent(this, LabelOverviewActivity.class)));
     }
 
     public void gotoEditTask(View view) {

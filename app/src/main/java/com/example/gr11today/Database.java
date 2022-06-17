@@ -5,19 +5,23 @@ import android.content.Context;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.gr11today.daos.LabelDao;
 import com.example.gr11today.daos.TaskDao;
 import com.example.gr11today.daos.UserDao;
+import com.example.gr11today.models.Label;
 import com.example.gr11today.models.Task;
 import com.example.gr11today.models.User;
 
 @androidx.room.Database(entities = {
         Task.class,
-        User.class},
+        User.class,
+        Label.class},
         version = 1,
         exportSchema = false)
 public abstract class Database extends RoomDatabase {
     public abstract TaskDao taskDao();
     public abstract UserDao userDao();
+    public abstract LabelDao labelDao();
 
 
     public static Database getDatabase(Context context) {
