@@ -23,6 +23,9 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
+    @Ignore
+    User activeUser;
+
     public User() {
     }
 
@@ -46,6 +49,14 @@ public class User {
             Database.getDatabase(context).userDao().insert(user);
         }
     }*/
+
+    public void setActiveUser(User user) {
+        activeUser = user;
+    }
+
+    public User getActiveUser() {
+        return activeUser;
+    }
 
     public Integer getId() {
         return id;
