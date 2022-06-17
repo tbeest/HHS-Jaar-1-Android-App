@@ -37,17 +37,21 @@ public class RegisterActivity extends AppCompatActivity {
         validatePasswordIdEt = findViewById(R.id.validatePasswordId);
         String validatePasswordStr = validatePasswordIdEt.getText().toString();
 
-        if (Validate.validateInputStringNotNullNotEmpty(userStr) &&
-                Validate.validateInputStringNotNullNotEmpty(passwordStr) &&
-                Validate.validateInputStringNotNullNotEmpty(validatePasswordStr)) {
-            Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
+        if (!Validate.validateInputStringNotNullNotEmpty(userStr)) {
+            Toast.makeText(this, R.string.emptyUsernameField, Toast.LENGTH_SHORT).show();
+        } else if (!Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
+            Toast.makeText(this, R.string.emptyPasswordField, Toast.LENGTH_SHORT).show();
+        } else if (!Validate.validateInputStringNotNullNotEmpty(validatePasswordStr)) {
+            Toast.makeText(this, R.string.emptyValidatePasswordField, Toast.LENGTH_SHORT).show();
             return;
             }
 
-        if (!Validate.checkRegistrationLengthField(userStr) &&
-                Validate.checkRegistrationLengthField(passwordStr) &&
-                Validate.checkRegistrationLengthField(validatePasswordStr)) {
-            Toast.makeText(this, R.string.fillInCorrectLength, Toast.LENGTH_SHORT).show();
+        if (!Validate.checkRegistrationLengthField(userStr)) {
+            Toast.makeText(this, R.string.fillInCorrectLengthUsername, Toast.LENGTH_SHORT).show();
+        } else if (!Validate.checkRegistrationLengthField(passwordStr)) {
+            Toast.makeText(this, R.string.fillInCorrectLengthPassword, Toast.LENGTH_SHORT).show();
+        } else if (!Validate.checkRegistrationLengthField(validatePasswordStr)) {
+            Toast.makeText(this, R.string.passwordsNotMatch, Toast.LENGTH_SHORT).show();
             return;
         }
 

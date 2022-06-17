@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
         String passwordStr = passwordIdEt.getText().toString();
 
 
-        if (!Validate.validateInputStringNotNullNotEmpty(userStr) && !Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
-            Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
+        if (!Validate.validateInputStringNotNullNotEmpty(userStr)) {
+            Toast.makeText(this, R.string.emptyUsernameField, Toast.LENGTH_SHORT).show();
+        } else if (!Validate.validateInputStringNotNullNotEmpty(passwordStr)) {
+            Toast.makeText(this, R.string.emptyPasswordField, Toast.LENGTH_SHORT).show();
             return;
         }
 

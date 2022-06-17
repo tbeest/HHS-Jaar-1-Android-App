@@ -34,11 +34,11 @@
     <string name="tooltipTaskDelete">Taak verwijderen</string>
     <string name="openTasksMarkedDone">Gemarkeerd als gedaan</string>
     <string name="openTasksMarkedOpen">Gemarkeerd als To Do</string>
-    <string name="emptyField">Één of meer velden zijn leeg</string>
     <string name="fieldsFilledInCorrectly">Geregistreerd</string>
     <string name="accountDoesntExist">Account bestaat niet</string>
     <string name="accountAlreadyExists">Account bestaat al</string>
-    <string name="fillInCorrectLength">Te weinig karakters gebruikt</string>
+    <string name="fillInCorrectLengthUsername">Te weinig karakters voor een gebruikersnaam</string>
+    <string name="fillInCorrectLengthPassword">Te weinig karakters voor een password</string>
     <string name="labelsDeleteLabel">Verwijder label</string>
     <string name="toDoTitleLabel">Labels</string>
     <string name="labelNameHint">Stel label naam in</string>
@@ -48,4 +48,7 @@
     <string name="addLabelLabelAdded">Label toegevoegd</string>
     <string name="addLabelLabelEdited">Label bewerkt</string>
     <string name="tooltipAddNewLabel">Voeg nieuw label toe</string>
+    <string name="emptyUsernameField">Vul een gebruikersnaam in</string>
+    <string name="emptyPasswordField">Vul een wachtwoord in</string>
+    <string name="emptyValidatePasswordField">Herhaal uw wachtwoord</string>
 </resources>

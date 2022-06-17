@@ -29,7 +29,9 @@
     <string name="passwordsNotMatch">Passwords do not match!</string>
     <string name="fieldsFilledInCorrectly">User Registered</string>
     <string name="tooltipLabelButton">Manage labels</string>
-    <string name="emptyField">One or more fields are empty</string>
+    <string name="emptyUsernameField">Please fill in a correct username</string>
+    <string name="emptyPasswordField">Please fill in a correct password</string>
+    <string name="emptyValidatePasswordField">Please repeat your password</string>
     <string name="addTaskTaskAdded">Added Task</string>
     <string name="addTaskTaskEdited">Task edited</string>
     <string name="addTaskTaskDelete">Task deleted</string>
@@ -37,8 +39,9 @@
     <string name="openTasksMarkedDone">Marked done</string>
     <string name="openTasksMarkedOpen">Marked To Do</string>
     <string name="accountDoesntExist">Account does not exist</string>
-    <string name="accountAlreadyExists">Account does not exist</string>
-    <string name="fillInCorrectLength">Characters used to short</string>
+    <string name="accountAlreadyExists">Account already exists</string>
+    <string name="fillInCorrectLengthUsername">Characters used for username to short</string>
+    <string name="fillInCorrectLengthPassword">Characters used for password to short</string>
     <string name="labelsDeleteLabel">Delete label</string>
     <string name="toDoTitleLabel">Labels</string>
     <string name="labelNameHint">Set label name</string>

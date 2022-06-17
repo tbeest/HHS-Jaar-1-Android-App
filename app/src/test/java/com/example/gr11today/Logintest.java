@@ -8,6 +8,21 @@ public class Logintest {
 
     //velden leeg
     @Test
+    public void checkIfAnyGivenStringIsCorrect() {
+        //ARRANGE
+        //E.g. username
+        Validate validate = new Validate();
+        String username = "test";
+
+        //ACT
+        boolean result = validate.validateInputStringNotNullNotEmpty(username);
+
+        //ASSERT
+        boolean expected = true;
+        assertEquals(expected,result);
+    }
+
+    @Test
     public void checkIfAnyGivenStringNotEmpty() {
         //ARRANGE
         //E.g. username
@@ -63,7 +78,7 @@ public class Logintest {
         boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
-        boolean expected = false;
+        boolean expected = true;
         assertEquals(expected, result);
     }
 
@@ -78,7 +93,37 @@ public class Logintest {
         boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
 
         //ASSERT
-        boolean expected = false;
+        boolean expected = true;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void checkIfPasswordsOneIsEmpty() {
+        //ARRANGE
+        Validate validate = new Validate();
+        String TestPassword1 = "correct";
+        String TestPassword2 = "";
+
+        //ACT
+        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+
+        //ASSERT
+        boolean expected = true;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void checkIfPasswordsBothAreEmpty() {
+        //ARRANGE
+        Validate validate = new Validate();
+        String TestPassword1 = "";
+        String TestPassword2 = "";
+
+        //ACT
+        boolean result = validate.checkIfEqual(TestPassword1, TestPassword2);
+
+        //ASSERT
+        boolean expected = true;
         assertEquals(expected, result);
     }
 
