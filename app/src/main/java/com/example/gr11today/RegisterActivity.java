@@ -29,6 +29,10 @@ public class RegisterActivity extends AppCompatActivity {
         loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     public void register(View view) {
         userIdEt = findViewById(R.id.userId);
         String userStr = userIdEt.getText().toString();

@@ -33,8 +33,8 @@ public class Task {
     private Integer id;
 
     private Integer labelId;
+    private Integer userId;
 
-    //private Integer userID;
     private String title;
     private String description;
 
@@ -44,8 +44,13 @@ public class Task {
 
     @Ignore
     private Label label;
+
+    @Ignore
+    private User user;
+
     @Ignore
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm");
+
 
     @Override
     public String toString() {
@@ -55,8 +60,10 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", labelId=" + labelId +
+                ", userId=" + userId +
                 '}';
     }
+
 
     public static void addTask(Task task, Context context) {
         if (task != null) {
@@ -92,6 +99,17 @@ public class Task {
         }
         return tasks;
     }
+
+    /*    public static List<Task> getAllTasksByUserId(Context context) {
+        List<Task> tasks = Database.getDatabase(context).taskDao().getAllTasksByUserId();
+
+        for (Task task : tasks) {
+            if (task.userId != null) {
+                task.user = Database.getDatabase(context).userDao().getById(task.userId);
+            }
+        }
+        return tasks;
+    }*/
 
     public Task() {
     }
@@ -195,11 +213,18 @@ public class Task {
         this.label = label;
     }
 
-/*    public Integer getUserId() {
-        return userID;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }*/
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

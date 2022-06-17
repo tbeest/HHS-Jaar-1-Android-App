@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         signInId.setOnClickListener(v -> loginIn(v));
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     public void loginIn(View view) {
         userIdEt = findViewById(R.id.userId);
         String userStr = userIdEt.getText().toString();

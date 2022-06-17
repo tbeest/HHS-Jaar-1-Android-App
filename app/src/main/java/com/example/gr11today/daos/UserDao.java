@@ -17,6 +17,9 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE name = :username")
     User getByUsername(String username);
 
+/*    @Query("SELECT * FROM task WHERE userId = :userId")
+    List<Task> getAllTasksByUserId(int userId);*/
+
     @Insert
     void registerUser(User user);
 
