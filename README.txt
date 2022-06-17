@@ -5,9 +5,3 @@ Tijn van der Helm
 
 Known bugs/issues:
 - V5.1 wireframes niet 100% up-to-date
-
-
-To do:
-- Unit tests.
-- Gebruikers koppelen aan taken.
-- Label layout in task overview
