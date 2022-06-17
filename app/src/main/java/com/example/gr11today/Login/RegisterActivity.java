@@ -1,4 +1,4 @@
-package com.example.gr11today;
+package com.example.gr11today.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,14 +10,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gr11today.Database;
+import com.example.gr11today.R;
+import com.example.gr11today.Validate;
 import com.example.gr11today.daos.UserDao;
 import com.example.gr11today.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText userIdEt, passwordIdEt, validatePasswordIdEt;
-    TextView loginScreenId;
-    Button registerId;
+    private EditText userIdEt, passwordIdEt, validatePasswordIdEt;
+    private TextView loginScreenId;
+    private Button registerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerId = findViewById(R.id.registerId);
         loginScreenId = findViewById(R.id.loginScreenId);
 
-        loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, MainActivity.class)));
+        loginScreenId.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, LoginActivity.class)));
     }
 
     @Override

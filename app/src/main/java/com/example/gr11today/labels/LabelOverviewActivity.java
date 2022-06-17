@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gr11today.Database;
-import com.example.gr11today.MainActivity;
+import com.example.gr11today.Login.LoginActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.adapters.LabelRowAdapter;
 import com.example.gr11today.models.Label;
@@ -110,6 +110,6 @@ public class LabelOverviewActivity extends AppCompatActivity {
     }
 
     public void signOut(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

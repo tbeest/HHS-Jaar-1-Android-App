@@ -60,16 +60,16 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         System.out.println("OnCreate AddTaskActivity");
 
         Intent intent = getIntent();
-        String taskIdStr = intent.getStringExtra("ID");
-        System.out.println("taskIdStr: " + taskIdStr);
+        Bundle results = intent.getExtras();
+        if (results != null) {
+            taskId = results.getInt("ID");
+        }
 
-        if (tv.stringNotEmpty(taskIdStr)) {
+        if (taskId > 0) {
             titleET = findViewById(R.id.task_title);
             descriptionET = findViewById(R.id.task_description);
             taskCB = findViewById(R.id.task_checkBox);
             dateB = findViewById(R.id.task_date);
-
-            taskId = Integer.parseInt(taskIdStr);
 
             Task task = Database.getDatabase(getApplicationContext()).taskDao().getById(taskId);
 

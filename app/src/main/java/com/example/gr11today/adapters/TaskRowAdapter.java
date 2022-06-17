@@ -19,7 +19,7 @@ import java.util.List;
 
 public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHolder> {
     private List<Task> data;
-    TaskValidator tv = new TaskValidator();
+    private TaskValidator tv = new TaskValidator();
 
     public TaskRowAdapter(List<Task> data) {
         this.data = data;

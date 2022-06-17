@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gr11today.Database;
-import com.example.gr11today.MainActivity;
+import com.example.gr11today.Login.LoginActivity;
 import com.example.gr11today.R;
 import com.example.gr11today.TaskValidator;
 import com.example.gr11today.adapters.TaskRowAdapter;
@@ -52,7 +52,6 @@ public class TaskOverviewActivity extends AppCompatActivity {
         titleId = findViewById(R.id.taskTitleId);
         filterButtonId = findViewById(R.id.filterTasksButton);
 
-
         tasks = Task.getAll(this, done, labelId);
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -60,7 +59,7 @@ public class TaskOverviewActivity extends AppCompatActivity {
             public void onActivityResult(ActivityResult result) {
                 if (result.getData() != null) {
                     Bundle results = result.getData().getExtras();
-                    if (result != null) {
+                    if (results != null) {
                         labelId = results.getInt("LABELID");
                     }
                 }
@@ -105,11 +104,7 @@ public class TaskOverviewActivity extends AppCompatActivity {
         Intent intent = new Intent(TaskOverviewActivity.this, AddTaskActivity.class);
 
         Integer taskId = (Integer) view.getTag();
-        String taskIdStr = taskId + "";
-
-        System.out.println("Passed task ID str: " + taskIdStr);
-
-        intent.putExtra("ID", taskIdStr);
+        intent.putExtra("ID", taskId);
 
         launcher.launch(intent);
     }
@@ -158,6 +153,6 @@ public class TaskOverviewActivity extends AppCompatActivity {
     }
 
     public void signOut(View view) {
-        startActivity(new Intent(TaskOverviewActivity.this, MainActivity.class));
+        startActivity(new Intent(TaskOverviewActivity.this, LoginActivity.class));
     }
 }

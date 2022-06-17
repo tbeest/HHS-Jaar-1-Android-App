@@ -18,7 +18,7 @@ import java.util.List;
 
 public class LabelRowAdapter extends RecyclerView.Adapter<LabelRowAdapter.ViewHolder> {
     private List<Label> data;
-    boolean hideDelete;
+    private boolean hideDelete;
 
     public LabelRowAdapter(List<Label> data, boolean hideDelete) {
         if (hideDelete) {

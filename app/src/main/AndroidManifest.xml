@@ -17,10 +17,10 @@
             android:name=".tasks.AddTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Login.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".labels.LabelOverviewActivity"

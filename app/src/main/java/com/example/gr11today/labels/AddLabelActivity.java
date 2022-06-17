@@ -16,14 +16,14 @@ import com.example.gr11today.models.Label;
 
 public class AddLabelActivity extends AppCompatActivity {
 
-    int taskId;
-    boolean editLabel = false;
-    int labelId;
-    String labelIdStr, name;
+    private int taskId;
+    private boolean editLabel = false;
+    private int labelId;
+    private String labelIdStr, name;
 
-    TaskValidator tv = new TaskValidator();
-    EditText nameET, descriptionET;
-    Button cancelB;
+    private TaskValidator tv = new TaskValidator();
+    private EditText nameET, descriptionET;
+    private Button cancelB;
 
 
     @Override
