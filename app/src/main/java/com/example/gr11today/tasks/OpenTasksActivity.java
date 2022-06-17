@@ -66,6 +66,10 @@ public class OpenTasksActivity extends AppCompatActivity {
         labelButtonId.setOnClickListener(v -> startActivity(new Intent(this, LabelOverviewActivity.class)));
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     public void gotoEditTask(View view) {
         Intent intent = new Intent(OpenTasksActivity.this, AddTaskActivity.class);
 
