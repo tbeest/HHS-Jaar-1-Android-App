@@ -65,11 +65,9 @@ public class SelectLabelActivity extends AppCompatActivity {
         LabelRowAdapter adapter = new LabelRowAdapter(labels, true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        labelRowId = findViewById(R.id.label_row_layout_id);
     }
 
-    public void finish(View view) {
+    public void gotoEditLabel(View view) {
         Intent intent = new Intent();
 
         Integer labelId = (Integer) view.getTag();
