@@ -2,26 +2,26 @@ package com.example.gr11today;
 
 public class Validate {
 
-//    public static Boolean validateInput(String input) {
-//        if (input == null || input.equals("")){
-//            return false;
-//        }
-//        return true;
-//    }
-
-    public static Boolean validateInput(String input) {
-        if (input.isEmpty()){
+    public static Boolean validateInputStringNotNullNotEmpty(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
             return false;
         }
         return true;
     }
 
-    public static Boolean allFieldsEmpty(String username, String password, String validatePassword) {
+/*    public static Boolean validateInputString (String input) {
+        if (input.isEmpty()){
+            return false;
+        }
+        return true;
+    }*/
+
+/*    public static Boolean allFieldsEmpty(String username, String password, String validatePassword) {
         if (username.isEmpty() || password.isEmpty() || validatePassword.isEmpty()) {
             return true;
         }
         return false;
-    }
+    }*/
 
     public static Boolean checkIfEqual(String password, String validatePassword) {
         if (password.equals(validatePassword)) {
@@ -30,18 +30,18 @@ public class Validate {
         return false;
     }
 
-    public static Boolean checkRegistrationLengthField(String username, String password, String validatePassword) {
-        if (username.length() >= 5 || password.length() >= 5 || validatePassword.length() >= 5) {
+    public static Boolean checkRegistrationLengthField(String String) {
+        if (String.length() >= 5) {
             return true;
         }
         return false;
     }
 
     public static Boolean checkFieldNotNull(String input) {
-        if (input != null) {
-            return true;
+        if (input == null) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static boolean inputValidString(String input) {

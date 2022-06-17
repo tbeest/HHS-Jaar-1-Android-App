@@ -26,14 +26,6 @@ import java.util.List;
                 parentColumns = "labelId", //<--- verwijst naar de id column in Label.class
                 childColumns = "labelId",  //<--- verwijst naar de labelId column hier beneden in deze class.
                 onDelete = SET_NULL)
-
-/*
-        @ForeignKey(
-                entity = User.class,
-                parentColumns = "id",
-                childColumns = "userID",
-                onDelete = SET_NULL)
-)*/
 })
 
 public class Task {

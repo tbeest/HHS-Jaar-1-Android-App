@@ -37,12 +37,16 @@ public class RegisterActivity extends AppCompatActivity {
         validatePasswordIdEt = findViewById(R.id.validatePasswordId);
         String validatePasswordStr = validatePasswordIdEt.getText().toString();
 
-        if (Validate.allFieldsEmpty(userStr, passwordStr, validatePasswordStr)) {
+        if (Validate.validateInputStringNotNullNotEmpty(userStr) &&
+                Validate.validateInputStringNotNullNotEmpty(passwordStr) &&
+                Validate.validateInputStringNotNullNotEmpty(validatePasswordStr)) {
             Toast.makeText(this, R.string.emptyField, Toast.LENGTH_SHORT).show();
             return;
             }
 
-        if (!Validate.checkRegistrationLengthField(userStr, passwordStr, validatePasswordStr)) {
+        if (!Validate.checkRegistrationLengthField(userStr) &&
+                Validate.checkRegistrationLengthField(passwordStr) &&
+                Validate.checkRegistrationLengthField(validatePasswordStr)) {
             Toast.makeText(this, R.string.fillInCorrectLength, Toast.LENGTH_SHORT).show();
             return;
         }
