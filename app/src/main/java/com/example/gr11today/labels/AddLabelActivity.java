@@ -39,6 +39,8 @@ public class AddLabelActivity extends AppCompatActivity {
 
             labelId = Integer.parseInt(labelIdStr);
 
+            System.out.println("onCreate getUserId");
+
             Label label = Database.getDatabase(getApplicationContext()).labelDao().getById(labelId, User.getActiveUser().getUserId());
 
             nameET.setText(label.getName());
