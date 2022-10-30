@@ -13,4 +13,4 @@ Screenshots: https://imgur.com/a/0vTUTqi
 
 Known issues:
  - User does not stay logged in
- - Labels aren't always dissplayed properly
+ - Labels aren't always displayed properly
